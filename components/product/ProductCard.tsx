@@ -13,7 +13,7 @@ export default function ProductCard({
   views,
 }: ProductList) {
   console.log(mainImages);
-  // 뭐가 나오는지 확인
+  // link id변경
   return (
     <Link href={`/products/${_id}`}>
       <div className="aspect-square rounded-lg overflow-hidden bg-gray-100">
