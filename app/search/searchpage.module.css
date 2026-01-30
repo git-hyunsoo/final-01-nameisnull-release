@@ -1,0 +1,22 @@
+@keyframes hintFadeSlide {
+  0% {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  15% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  85% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+}
+
+.hint {
+  animation: hintFadeSlide 3s ease-in-out both;
+}

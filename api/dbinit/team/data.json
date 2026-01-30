@@ -8,7 +8,7 @@
       "address": "서울시 강남구 역삼동 123",
       "type": "admin",
       "loginType": "email",
-      "image": "files/team/user-muzi.png",
+      "image": "uploadFiles/user-muzi.png",
       "extra": {
         "birthday": "03-23"
       }
@@ -21,13 +21,1364 @@
       "address": "서울시 강남구 삼성동 456",
       "type": "seller",
       "loginType": "email",
-      "image": "files/team/user-neo.png",
+      "image": "uploadFiles/user-neo.png",
+      "extra": {
+        "birthday": "11-23"
+      }
+    },
+    {
+      "email": "judylovenick@market.com",
+      "password": "$2b$10$S.8GNMDyvUF0xzujPtHBu.j5gtS19.OhRmYbpJBnCHg2S83WLx1T2",
+      "name": "주디 홉스",
+      "phone": "01022223333",
+      "address": "서울시 강남구 삼성동 456",
+      "type": "seller",
+      "loginType": "email",
+      "image": "uploadFiles/Judy.png",
+      "extra": {
+        "birthday": "11-23"
+      }
+    },
+    {
+      "email": "pudeullover@market.com",
+      "password": "$2b$10$S.8GNMDyvUF0xzujPtHBu.j5gtS19.OhRmYbpJBnCHg2S83WLx1T2",
+      "name": "푸들푸들",
+      "phone": "01022223333",
+      "address": "서울시 강남구 삼성동 456",
+      "type": "seller",
+      "loginType": "email",
+      "image": "uploadFiles/pudeul.png",
       "extra": {
         "birthday": "11-23"
       }
     }
   ],
-  "product": [],
+  "product": [
+    {
+      "seller_id": 4,
+      "price": 5000,
+      "shippingFees": 0,
+      "show": true,
+      "active": true,
+      "name": "강아지 실 장난감 판매합니다~ 터그 놀이용이고 새 상품입니다!!",
+      "quantity": 1,
+      "buyQuantity": 0,
+      "mainImages": [
+        {
+          "path": "uploadFiles/dogtoy.png",
+          "name": "sample-dog.png"
+        }
+      ],
+      "content": "강아지 실 장난감 판매합니다. 여러 개 사뒀는데 저희 강아진 안 가지고 노네요...ㅎㅎ 사진에 보이는 것보다 많이 있어요!",
+      "extra": {
+        "category": ["PC03", "PC0301"],
+        "sort": 5
+      }
+    },
+    {
+      "seller_id": 3,
+      "price": 3000,
+      "shippingFees": 0,
+      "show": true,
+      "active": true,
+      "name": "고양이가 좋아하는 쥐 모양 장난감 판매합니다!",
+      "quantity": 1,
+      "buyQuantity": 0,
+      "mainImages": [
+        {
+          "path": "uploadFiles/cattoy.jpg",
+          "name": "sample-cattoy.jpg"
+        }
+      ],
+      "content": "고양이들이 환장하는 쥐 모양 장난감입니다! 저희 집 고양이는 별로 안 좋아하는 것 같아서 내놓습니다. 사용감은 거의 없습니다!!",
+      "extra": {
+        "category": ["PC03", "PC0301"],
+        "sort": 5
+      }
+    },
+    {
+      "seller_id": 3,
+      "price": 7000,
+      "shippingFees": 0,
+      "show": true,
+      "active": true,
+      "name": "귀여운 생선 모양 장난감 판매합니다!",
+      "quantity": 1,
+      "buyQuantity": 0,
+      "mainImages": [
+        {
+          "path": "uploadFiles/dogtoy2.jpg",
+          "name": "sample-dogtoy2.jpg"
+        }
+      ],
+      "content": "강아지들이 물기 좋은 푹신한 장난감입니다. 사용감은 없습니다. 새 상품입니다!",
+      "extra": {
+        "category": ["PC03", "PC0301"],
+        "sort": 5
+      }
+    },
+    {
+      "seller_id": 3,
+      "price": 15000,
+      "shippingFees": 0,
+      "show": true,
+      "active": true,
+      "name": "대형 골판지 스크래쳐 침대형",
+      "quantity": 1,
+      "buyQuantity": 0,
+      "mainImages": [
+        {
+          "path": "uploadFiles/scratcher1.png",
+          "name": "scratcher1.png"
+        },
+        {
+          "path": "uploadFiles/scratcher1-1.png",
+          "name": "scratcher1-1.png"
+        }
+      ],
+      "content": "대형 골판지 스크래쳐 침대형이라 눕기도 좋고 긁기도 좋아요. 새로운 스크래쳐를 선물 받아 더이상 사용하지 않을 것 같아서 판매합니다.",
+      "extra": {
+        "pet": "cat",
+        "mainCategory": "supplies",
+        "subCategory": "scratcher",
+        "condition": "used",
+        "tradeType": "direct",
+        "tradeLocation": "종로구"
+      }
+    },
+    {
+      "seller_id": 3,
+      "price": 9000,
+      "show": true,
+      "active": true,
+      "name": "세로형 기둥 스크래쳐 70cm",
+      "quantity": 1,
+      "buyQuantity": 0,
+      "mainImages": [
+        {
+          "path": "uploadFiles/scratcher2.png",
+          "name": "scratcher2.png"
+        },
+        {
+          "path": "uploadFiles/scratcher2-1.png",
+          "name": "scratcher2-1.png"
+        }
+      ],
+      "content": "세로형 기둥 스크래쳐라 쭉 뻗어 긁기 좋아요. 기둥 부분 사용감 있고, 바닥은 흔들림 적게 잘 잡혀요.",
+      "extra": {
+        "pet": "cat",
+        "mainCategory": "supplies",
+        "subCategory": "scratcher",
+        "condition": "used",
+        "tradeType": "both",
+        "tradeLocation": "강서구"
+      }
+    },
+    {
+      "seller_id": 4,
+      "price": 15000,
+      "show": true,
+      "active": true,
+      "name": "소파형 스크래쳐 양면",
+      "quantity": 1,
+      "buyQuantity": 0,
+      "mainImages": [
+        {
+          "path": "uploadFiles/scratcher3.png",
+          "name": "scratcher3.png"
+        }
+      ],
+      "content": "곡선이라 몸 비비며 긁기 좋아요. 소파형 스크래쳐라 저희집 냥이가 누워있기도 했어요 양면인데 한쪽만 살짝 사용했고, 반대면은 거의 새거예요.",
+      "extra": {
+        "pet": "cat",
+        "mainCategory": "supplies",
+        "subCategory": "scratcher",
+        "condition": "used",
+        "tradeType": "delivery",
+        "tradeLocation": "없음"
+      }
+    },
+    {
+      "seller_id": 4,
+      "price": 8000,
+      "show": true,
+      "active": true,
+      "name": "가르르 매트 스크래쳐",
+      "quantity": 1,
+      "buyQuantity": 0,
+      "mainImages": [
+        {
+          "path": "uploadFiles/scratcher4.png",
+          "name": "scratcher4.png"
+        },
+        {
+          "path": "uploadFiles/scratcher4-1.png",
+          "name": "scratcher4-1.png"
+        }
+      ],
+      "content": "가르르 매트 스크래쳐라 인테리어용으로 좋지만 저희집 인테리어와 맞지 않아 판매합니다.",
+      "extra": {
+        "pet": "cat",
+        "mainCategory": "supplies",
+        "subCategory": "scratcher",
+        "condition": "used",
+        "tradeType": "delivery",
+        "tradeLocation": "없음"
+      }
+    },
+    {
+      "seller_id": 3,
+      "price": 3000,
+      "show": true,
+      "active": true,
+      "name": "벽걸이 스크래쳐 패널",
+      "quantity": 1,
+      "buyQuantity": 0,
+      "mainImages": [
+        {
+          "path": "uploadFiles/scratcher5.png",
+          "name": "scratcher5.png"
+        },
+        {
+          "path": "uploadFiles/scratcher5-1.png",
+          "name": "scratcher5-1.png"
+        }
+      ],
+      "content": "저희집 냥이가 벽걸이 스크래쳐 패널 좋아했어서 사용감 많습니다, 패널 상태는 사진 참고 부탁드립니다.",
+      "extra": {
+        "pet": "cat",
+        "mainCategory": "supplies",
+        "subCategory": "scratcher",
+        "condition": "used",
+        "tradeType": "direct",
+        "tradeLocation": "강남구"
+      }
+    },
+    {
+      "seller_id": 4,
+      "price": 3000,
+      "show": true,
+      "active": true,
+      "name": "벽걸이 스크래쳐 패널",
+      "quantity": 1,
+      "buyQuantity": 0,
+      "mainImages": [
+        {
+          "path": "uploadFiles/scratcher5.png",
+          "name": "scratcher5.png"
+        },
+        {
+          "path": "uploadFiles/scratcher5-1.png",
+          "name": "scratcher5-1.png"
+        }
+      ],
+      "content": "저희집 냥이가 벽걸이 스크래쳐 패널 좋아했어서 사용감 많습니다, 패널 상태는 사진 참고 부탁드립니다.",
+      "extra": {
+        "pet": "cat",
+        "mainCategory": "supplies",
+        "subCategory": "scratcher",
+        "condition": "used",
+        "tradeType": "direct",
+        "tradeLocation": "강남구"
+      }
+    },
+    {
+      "seller_id": 3,
+      "price": 9000,
+      "show": true,
+      "active": true,
+      "name": "원통형 스크래쳐",
+      "quantity": 1,
+      "buyQuantity": 0,
+      "mainImages": [
+        {
+          "path": "uploadFiles/scratcher6.png",
+          "name": "scratcher6.png"
+        },
+        {
+          "path": "uploadFiles/scratcher6-1.png",
+          "name": "scratcher6-1.png"
+        }
+      ],
+      "content": "원통형 스크래쳐라 맨 위에 올라가서 쉴 수도 있고 안에 들어가 쉬면서 긁는 타입이에요. 내부 사용감 있고, 냄새는 없게 청소해뒀습니다.",
+      "extra": {
+        "pet": "cat",
+        "mainCategory": "supplies",
+        "subCategory": "scratcher",
+        "condition": "used",
+        "tradeType": "delivery",
+        "tradeLocation": "강서구"
+      }
+    },
+    {
+      "seller_id": 2,
+      "price": 4000,
+      "show": true,
+      "active": true,
+      "name": "카펫 재질 스크래쳐 패드",
+      "quantity": 1,
+      "buyQuantity": 0,
+      "mainImages": [
+        {
+          "path": "uploadFiles/scratcher7.png",
+          "name": "scratcher7.png"
+        }
+      ],
+      "content": "카펫 재질 스크래쳐 패드고 카펫 느낌 선호하는 아이용이에요. 사서 꺼내만 보고 미사용이라 새상품 판매합니다.",
+      "extra": {
+        "pet": "cat",
+        "mainCategory": "supplies",
+        "subCategory": "scratcher",
+        "condition": "new",
+        "tradeType": "both",
+        "tradeLocation": "노원구"
+      }
+    },
+    {
+      "seller_id": 3,
+      "price": 6000,
+      "show": true,
+      "active": true,
+      "name": "교체형 스크래쳐 리필 3개 세트",
+      "quantity": 1,
+      "buyQuantity": 0,
+      "mainImages": [
+        {
+          "path": "uploadFiles/scratcher8.png",
+          "name": "scratcher8.png"
+        }
+      ],
+      "content": "교체형 스크래쳐 리필 3개 세트이고 프레임에 끼워 쓰는 리필 특대형 이에요. 규격 맞는 분만 구매 추천하고 비닐도 뜯지 않은 새상품이라 깔끔합니다.",
+      "extra": {
+        "pet": "cat",
+        "mainCategory": "supplies",
+        "subCategory": "scratcher",
+        "condition": "new",
+        "tradeType": "both",
+        "tradeLocation": "노원구"
+      }
+    },
+    {
+      "seller_id": 2,
+      "price": 6000,
+      "show": true,
+      "active": true,
+      "name": "사날 몰트 헤어볼  100g",
+      "quantity": 1,
+      "buyQuantity": 0,
+      "mainImages": [
+        {
+          "path": "uploadFiles/supplement1.png",
+          "name": "supplement1.png"
+        }
+      ],
+      "content": "교체형 스크래쳐 리필 3개 세트이고 프레임에 끼워 쓰는 리필 특대형 이에요. 규격 맞는 분만 구매 추천하고 비닐도 뜯지 않은 새상품이라 깔끔합니다.",
+      "extra": {
+        "pet": "cat",
+        "mainCategory": "health",
+        "subCategory": "supplement",
+        "condition": "new",
+        "tradeType": "both",
+        "tradeLocation": "노원구"
+      }
+    },
+    {
+      "seller_id": 2,
+      "price": 10000,
+      "show": true,
+      "active": true,
+      "name": "고양이 유산균 파우더 30포",
+      "quantity": 1,
+      "buyQuantity": 0,
+      "mainImages": [
+        {
+          "path": "uploadFiles/supplement2.png",
+          "name": "supplement2.png"
+        }
+      ],
+      "content": "고양이 유산균 파우더 30포 입니다. 습식에 섞기 쉬운 분말이에요. 장이 안정돼서 더 필요 없게 되어 미개봉 판매합니다.",
+      "extra": {
+        "pet": "cat",
+        "mainCategory": "health",
+        "subCategory": "supplement",
+        "condition": "new",
+        "tradeType": "delivery",
+        "tradeLocation": "노원구"
+      }
+    },
+    {
+      "seller_id": 2,
+      "price": 13000,
+      "show": true,
+      "active": true,
+      "name": "연어오일 100ml, 90% 이상 남음",
+      "quantity": 1,
+      "buyQuantity": 0,
+      "mainImages": [
+        {
+          "path": "uploadFiles/supplement3.png",
+          "name": "supplement3.png"
+        }
+      ],
+      "content": "사료에 몇 방울 섞는 타입이에요. 연어오일 비린내가 싫었는지 안 먹어서 거의 남은 채로 판매합니다. ",
+      "extra": {
+        "pet": "cat",
+        "mainCategory": "health",
+        "subCategory": "supplement",
+        "condition": "used",
+        "tradeType": "both",
+        "tradeLocation": "도봉구"
+      }
+    },
+    {
+      "seller_id": 4,
+      "price": 7000,
+      "show": true,
+      "active": true,
+      "name": "관절 케어 츄어블 300g",
+      "quantity": 1,
+      "buyQuantity": 0,
+      "mainImages": [
+        {
+          "path": "uploadFiles/supplement4.png",
+          "name": "supplement4.png"
+        }
+      ],
+      "content": "말랑한 츄어블이라 간식처럼 먹기 좋아요. 관절 케어 츄어블이라 관절에 좋습니다. 고양이 용이에요. 다른 제품으로 바꿔서 미개봉 판매합니다.",
+      "extra": {
+        "pet": "cat",
+        "mainCategory": "health",
+        "subCategory": "supplement",
+        "condition": "new",
+        "tradeType": "both",
+        "tradeLocation": "용산구"
+      }
+    },
+    {
+      "seller_id": 3,
+      "price": 28000,
+      "show": true,
+      "active": true,
+      "name": " 요로 케어 짜먹는 영양제 30개",
+      "quantity": 1,
+      "buyQuantity": 0,
+      "mainImages": [
+        {
+          "path": "uploadFiles/supplement5.png",
+          "name": "supplement5.png"
+        }
+      ],
+      "content": "요로 케어에 좋고 짜먹는 영양제 입니다! 습식에 섞기 좋은 분말이에요. 요로 관리 루틴 바꿔서 남은 미개봉 판매합니다.",
+      "extra": {
+        "pet": "cat",
+        "mainCategory": "health",
+        "subCategory": "supplement",
+        "condition": "new",
+        "tradeType": "delivery",
+        "tradeLocation": "없음"
+      }
+    },
+    {
+      "seller_id": 4,
+      "price": 9500,
+      "show": true,
+      "active": true,
+      "name": "눈물자국 케어 분말 60g",
+      "quantity": 1,
+      "buyQuantity": 0,
+      "mainImages": [
+        {
+          "path": "uploadFiles/supplement6.png",
+          "name": "supplement6.png"
+        }
+      ],
+      "content": "눈물자국 케어 분말 60g이고 소량씩 사료에 뿌리는 타입이에요. 꾸준히 못할 것 같아 미개봉 상태로 판매합니다.",
+      "extra": {
+        "pet": "cat",
+        "mainCategory": "health",
+        "subCategory": "supplement",
+        "condition": "new",
+        "tradeType": "direct",
+        "tradeLocation": "은평구"
+      }
+    },
+    {
+      "seller_id": 4,
+      "price": 6700,
+      "show": true,
+      "active": true,
+      "name": "스트레스 완화 테아닌 15포",
+      "quantity": 1,
+      "buyQuantity": 0,
+      "mainImages": [
+        {
+          "path": "uploadFiles/supplement7.png",
+          "name": "supplement7.png"
+        }
+      ],
+      "content": "스트레스 완화 테아닌 15포이고 이사/병원 전 보조용으로 샀어요. 쓸 일이 없어 미개봉 판매하며, 향은 강하지 않은 편입니다.",
+      "extra": {
+        "pet": "cat",
+        "mainCategory": "health",
+        "subCategory": "supplement",
+        "condition": "new",
+        "tradeType": "direct",
+        "tradeLocation": "은평구"
+      }
+    },
+    {
+      "seller_id": 3,
+      "price": 9000,
+      "show": true,
+      "active": true,
+      "name": "고양이 종합비타민 파우더 60g",
+      "quantity": 1,
+      "buyQuantity": 0,
+      "mainImages": [
+        {
+          "path": "uploadFiles/supplement8.png",
+          "name": "supplement8.png"
+        }
+      ],
+      "content": "편식 보조로 섞어 먹이는 고양이 종합 비타민 파우더 60g입니다. 노령묘한테 좋습니다. 다른 영양제로 바꿔서 미개봉 그대로 판매합니다.",
+      "extra": {
+        "pet": "cat",
+        "mainCategory": "health",
+        "subCategory": "supplement",
+        "condition": "new",
+        "tradeType": "direct",
+        "tradeLocation": "서대문구"
+      }
+    },
+    {
+      "seller_id": 2,
+      "price": 6000,
+      "show": true,
+      "active": true,
+      "name": "유기농 캣닢 잎 팔아요! 미개봉 새상품입니다!",
+      "quantity": 1,
+      "buyQuantity": 0,
+      "mainImages": [
+        {
+          "path": "uploadFiles/catnip1.png",
+          "name": "catnip1.png"
+        }
+      ],
+      "content": "향이 진한 유기농 캣닢 잎이에요. 장난감에 살짝 뿌리면 반응 좋은데 우리 집은 무반응이라 판매합니다. 아예 뜯지 않은 새상품이에요!",
+      "extra": {
+        "pet": "cat",
+        "mainCategory": "treat",
+        "subCategory": "catnip",
+        "condition": "new",
+        "tradeType": "delivery",
+        "tradeLocation": "없음"
+      }
+    },
+    {
+      "seller_id": 2,
+      "price": 8000,
+      "show": true,
+      "active": true,
+      "name": "캣닢 스프레이 50ml, 1~2회 사용해서 거의 사용감 없어요!",
+      "quantity": 1,
+      "buyQuantity": 0,
+      "mainImages": [
+        {
+          "path": "uploadFiles/catnip2.webp",
+          "name": "catnip2.webp"
+        }
+      ],
+      "content": "캣닢 스프레이 50ml입니다. 스크래쳐/장난감에 뿌리면 고양이 관심 유도돼요. 향이 꽤 진해서 1~2번만 쓰고 보관만 했습니다. 누수 없이 상태 깔끔해요.",
+      "extra": {
+        "pet": "cat",
+        "mainCategory": "treat",
+        "subCategory": "catnip",
+        "condition": "new",
+        "tradeType": "delivery",
+        "tradeLocation": "없음"
+      }
+    },
+    {
+      "seller_id": 3,
+      "price": 2500,
+      "show": true,
+      "active": true,
+      "name": "캣닢 쿠션 토이 팔아요~",
+      "quantity": 1,
+      "buyQuantity": 0,
+      "mainImages": [
+        {
+          "path": "uploadFiles/catnip3.jfif",
+          "name": "catnip3.jifi"
+        }
+      ],
+      "content": "캣닢 쿠션 토이 팝니다! 말랑한 쿠션에 캣닢 들어가서 냄새 맡고 뒹굴기 좋아해요. 사용감은 좀 있지만 찢어짐 없이 멀쩡해서 저렴히 올립니다.",
+      "extra": {
+        "pet": "cat",
+        "mainCategory": "treat",
+        "subCategory": "catnip",
+        "condition": "used",
+        "tradeType": "both",
+        "tradeLocation": "양천구"
+      }
+    },
+    {
+      "seller_id": 3,
+      "price": 7000,
+      "show": true,
+      "active": true,
+      "name": "캣닢 티백 8개입 미개봉이고 새상품입니다!",
+      "quantity": 1,
+      "buyQuantity": 0,
+      "mainImages": [
+        {
+          "path": "uploadFiles/catnip4.jpg",
+          "name": "catnip4.jpg"
+        }
+      ],
+      "content": "티백처럼 깔끔하게 쓰는 캣닢 타입이에요. 장난감, 쿠션 안에 넣어두기 좋고 가루 날림 적습니다. 남아서 미개봉 새상품으로 판매해요.",
+      "extra": {
+        "pet": "cat",
+        "mainCategory": "treat",
+        "subCategory": "catnip",
+        "condition": "new",
+        "tradeType": "both",
+        "tradeLocation": "금천구"
+      }
+    },
+    {
+      "seller_id": 2,
+      "price": 15000,
+      "show": true,
+      "active": true,
+      "name": "캣닢 티백이랑 마따따비 같이 팔아요 거의 사용감 없어요!!",
+      "quantity": 1,
+      "buyQuantity": 0,
+      "mainImages": [
+        {
+          "path": "uploadFiles/catnip5.jpeg",
+          "name": "catnip5.jpg"
+        },
+        {
+          "path": "uploadFiles/catnip5-1.jpeg",
+          "name": "catnip5-1.jpeg"
+        }
+      ],
+      "content": "티백이라 가루 날림 적고 장난감/쿠션 안에 넣어 쓰기 좋아요. 캣닢 반응 약한 냥이도 관심 보일 수 있는 마따따비도 같이 팝니다. 향이 꽤 강해서 한 번만 소량 쓰고 거의 남았습니다. 둘 다 밀봉 보관했고 상태 깔끔해요.",
+      "extra": {
+        "pet": "cat",
+        "mainCategory": "treat",
+        "subCategory": "catnip",
+        "condition": "used",
+        "tradeType": "direct",
+        "tradeLocation": "영등포구"
+      }
+    },
+    {
+      "seller_id": 4,
+      "price": 4000,
+      "show": true,
+      "active": true,
+      "name": "캣닢 볼 팔아요!",
+      "quantity": 1,
+      "buyQuantity": 0,
+      "mainImages": [
+        {
+          "path": "uploadFiles/catnip6.webp",
+          "name": "catnip6.webp"
+        }
+      ],
+      "content": "캣닢 볼 팔아요! 굴리면 은은하게 캣닢 향이 나고 혼자 놀이용으로 좋아요. 저희 애는 공놀이 안 해서 새상품 그대로 판매합니다.",
+      "extra": {
+        "pet": "cat",
+        "mainCategory": "treat",
+        "subCategory": "catnip",
+        "condition": "new",
+        "tradeType": "direct",
+        "tradeLocation": "영등포구"
+      }
+    },
+    {
+      "seller_id": 2,
+      "price": 8000,
+      "show": true,
+      "active": true,
+      "name": "캣닢 스틱 5개입",
+      "quantity": 1,
+      "buyQuantity": 0,
+      "mainImages": [
+        {
+          "path": "uploadFiles/catnip7.webp",
+          "name": "catnip7.webp"
+        }
+      ],
+      "content": "캣닢 스틱 5개입 팔아요! 물고 뜯거나 얼굴/몸을 문지르며 놀기 좋은 스틱형이에요. 향이 꽤 진한 편인데 우리 애는 별로 안 좋아하는 거 같아서 내놔요. 미사용이라 상태 깔끔해요.",
+      "extra": {
+        "pet": "cat",
+        "mainCategory": "treat",
+        "subCategory": "catnip",
+        "condition": "new",
+        "tradeType": "both",
+        "tradeLocation": "중랑구"
+      }
+    },
+    {
+      "seller_id": 3,
+      "price": 6500,
+      "show": true,
+      "active": true,
+      "name": "100% 자연 캣닢인 캣닢 파우더 팝니다!!",
+      "quantity": 1,
+      "buyQuantity": 0,
+      "mainImages": [
+        {
+          "path": "uploadFiles/catnip8.jpg",
+          "name": "catnip8.jpg"
+        }
+      ],
+      "content": "100% 자연 캣닢인 캣닢 파우더입니다. 가루라 스크래쳐에 뿌리기 편해요. 우리 애는 반응이 없어서 1~2번만 쓰고 대부분 남았습니다. 밀봉 보관, 상태 깔끔해요!",
+      "extra": {
+        "pet": "cat",
+        "mainCategory": "treat",
+        "subCategory": "catnip",
+        "condition": "used",
+        "tradeType": "direct",
+        "tradeLocation": "중랑구"
+      }
+    },
+    {
+      "seller_id": 4,
+      "price": 15000,
+      "show": true,
+      "active": true,
+      "name": "로얄캐닌 푸들 8세 이상 사료 1.5 kg 팔아요",
+      "quantity": 1,
+      "buyQuantity": 0,
+      "mainImages": [
+        {
+          "path": "uploadFiles/dry1.png",
+          "name": "dry1.png"
+        },
+        {
+          "path": "uploadFiles/dry1-1.png",
+          "name": "dry1-1.png"
+        }
+      ],
+      "content": "로얄캐닌 푸들 8세 이상 사료 1.5 kg이고 시니어 푸들용 노화 관리에 도움을 주는 영양 맞춤 사료입니다. 우리 애가 입맛이 까다로워서 좋은 거 사다줬는데 안 먹네요.... 개별 포장되어 있어서 한봉지만 빠진 새상품입니다. \n유통기한 : 2028년 1월 22일",
+      "extra": {
+        "pet": "dog",
+        "mainCategory": "food",
+        "subCategory": "dry",
+        "condition": "used",
+        "tradeType": "direct",
+        "tradeLocation": "영등포구"
+      }
+    },
+    {
+      "seller_id": 2,
+      "price": 18000,
+      "show": true,
+      "active": true,
+      "name": "피쉬포독 비숑, 포메, 말티즈 눈물자국용 사료",
+      "quantity": 1,
+      "buyQuantity": 0,
+      "mainImages": [
+        {
+          "path": "uploadFiles/dry2.png",
+          "name": "dry2.png"
+        }
+      ],
+      "content": "피쉬포독 비숑, 포메, 말티즈 눈물자국용 사료라 말티즈 눈물자국 관리용으로 비싼 사료 구매했는데 입에도 안 대서 팝니다.눈물자국 관리에 도움 되는 사료예요 소형견 전용 사료고 비숑, 포메, 말티즈 아이들 추천해요",
+      "extra": {
+        "pet": "dog",
+        "mainCategory": "food",
+        "subCategory": "dry",
+        "condition": "new",
+        "tradeType": "both",
+        "tradeLocation": "서초구"
+      }
+    },
+    {
+      "seller_id": 4,
+      "price": 28000,
+      "show": true,
+      "active": true,
+      "name": "강아지 유기농 다이어트 디톡스 사료 6kg 팔아요",
+      "quantity": 1,
+      "buyQuantity": 0,
+      "mainImages": [
+        {
+          "path": "uploadFiles/dry3.png",
+          "name": "dry3.png"
+        }
+      ],
+      "content": "강아지 유기농 다이어트 디톡스 사료 6kg이고 저칼로리 다이어트 사료라 체중 조절 중인 아이들에게 좋아요유통기한 때문에 몇 봉지만 좋은 가격에 판매합니다",
+      "extra": {
+        "pet": "dog",
+        "mainCategory": "food",
+        "subCategory": "dry",
+        "condition": "used",
+        "tradeType": "direct",
+        "tradeLocation": "송파구"
+      }
+    },
+    {
+      "seller_id": 2,
+      "price": 85000,
+      "show": true,
+      "active": true,
+      "name": "힐스 퍼펙트 웨이트 & 조인트 서포트 시니어 사료",
+      "quantity": 1,
+      "buyQuantity": 0,
+      "mainImages": [
+        {
+          "path": "uploadFiles/dry4.png",
+          "name": "dry4.png"
+        }
+      ],
+      "content": "힐스 퍼펙트 웨이트 & 조인트 서포트 시니어 사료입니다. 프리미엄 라인의 기능성 사료로 관절 부담 줄여주고 싶은 아이들한테 좋아요 개봉 후 소량만 급여했고 밀봉해서 보관 중입니다. \n유통기한 : 넉넉함 (구매 후 얼마 안 된 제품)",
+      "extra": {
+        "pet": "dog",
+        "mainCategory": "food",
+        "subCategory": "dry",
+        "condition": "used",
+        "tradeType": "delivery",
+        "tradeLocation": "송파구"
+      }
+    },
+    {
+      "seller_id": 4,
+      "price": 28000,
+      "show": true,
+      "active": true,
+      "name": "로얄캐닌 미니 인도어 3kg 아기 강아지사료",
+      "quantity": 1,
+      "buyQuantity": 0,
+      "mainImages": [
+        {
+          "path": "uploadFiles/dry5.png",
+          "name": "dry5.png"
+        }
+      ],
+      "content": "얄캐닌 미니 인도어 3kg 아기 강아지사료입니다. 새끼 강아지용으로 구매했는데 사료를 바꾸게 돼서 판매합니다 성장기에 필요한 영양 밸런스를 맞춰준 제품이에요. \n유통기한 : 2028년 02월 10일",
+      "extra": {
+        "pet": "dog",
+        "mainCategory": "food",
+        "subCategory": "dry",
+        "condition": "used",
+        "tradeType": "direct",
+        "tradeLocation": "동작구"
+      }
+    },
+    {
+      "seller_id": 3,
+      "price": 32000,
+      "show": true,
+      "active": true,
+      "name": "네츄럴랩 눈+관절 유기농 기능성 사료 2kg ",
+      "quantity": 1,
+      "buyQuantity": 0,
+      "mainImages": [
+        {
+          "path": "uploadFiles/dry6.png",
+          "name": "dry6.png"
+        },
+        {
+          "path": "uploadFiles/dry6-1.png",
+          "name": "dry6-1.png"
+        }
+      ],
+      "content": "네츄럴랩 눈+관절 유기농 기능성 사료 2kg입니다. 눈 건강이랑 관절 관리용으로 구매했는데 우리 강아지 입맛에는 잘 안 맞아서 판매합니다 유기농 원료로 만든 기능성 사료라 소형견 위주로 데일리 건강 관리용으로 좋아요 \n유통기한 : 2027년 11월 05일",
+      "extra": {
+        "pet": "dog",
+        "mainCategory": "food",
+        "subCategory": "dry",
+        "condition": "used",
+        "tradeType": "direct",
+        "tradeLocation": "동작구"
+      }
+    },
+    {
+      "seller_id": 2,
+      "price": 25000,
+      "show": true,
+      "active": true,
+      "name": "강아지 전연령 연 건식사료 3kg",
+      "quantity": 1,
+      "buyQuantity": 0,
+      "mainImages": [
+        {
+          "path": "uploadFiles/dry7.png",
+          "name": "dry7.png"
+        }
+      ],
+      "content": "전연령 연 건식사료 3kg입니다. 알러지 때문에 그레인프리 사료로 바꿔서 판매합니다1주일 정도 급여하고 2.7kg 정도 남았어요..연어 주원료라 오메가3 풍부하고고구마 들어가서 소화 잘 되고 변 상태도 좋아집니다밀폐용기에 보관해서 상태 좋습니다 \n유통기한 : 2026년 11월 15일",
+      "extra": {
+        "pet": "dog",
+        "mainCategory": "food",
+        "subCategory": "dry",
+        "condition": "used",
+        "tradeType": "delivery",
+        "tradeLocation": "없음"
+      }
+    },
+    {
+      "seller_id": 4,
+      "price": 45000,
+      "show": true,
+      "active": true,
+      "name": "중대형견 체중관리 닭고기 건식사료 12kg 대용량",
+      "quantity": 1,
+      "buyQuantity": 0,
+      "mainImages": [
+        {
+          "path": "uploadFiles/dry8.png",
+          "name": "dry8.png"
+        },
+        {
+          "path": "uploadFiles/dry8-1.png",
+          "name": "dry8-1.png"
+        }
+      ],
+      "content": "중대형견 체중관리 닭고기 건식사료 12kg 대용량 다이어트 사료인데 저희 애가 입맛에 안 맞는지 안 먹어서 팝니다3kg 정도 급여하고 9kg 남았습니다저칼로리 고단백 배합으로 체중 조절에 효과적이에요관절 건강 성분도 들어있어서 대형견한테 좋아요원래 가격 8만원대 제품인데 반값에 드립니다",
+      "extra": {
+        "pet": "dog",
+        "mainCategory": "food",
+        "subCategory": "dry",
+        "condition": "used",
+        "tradeType": "both",
+        "tradeLocation": "금천구"
+      }
+    },
+    {
+      "seller_id": 3,
+      "price": 16000,
+      "show": true,
+      "active": true,
+      "name": "그리니즈 덴탈껌 소형견용 미개봉 완전 저렴하게 팔아요",
+      "quantity": 1,
+      "buyQuantity": 0,
+      "mainImages": [
+        {
+          "path": "uploadFiles/gum1.png",
+          "name": "gum1.png"
+        },
+        {
+          "path": "uploadFiles/gum1-1.png",
+          "name": "gum1-1.png"
+        },
+        {
+          "path": "uploadFiles/gum1-2.png",
+          "name": "gum1-2.png"
+        }
+      ],
+      "content": "그리니즈 덴탈껌 소형견용 완전 미개봉 새상품입니다!!!!6키로짜리 말티즈가 잘 먹었어요너무 많이 쟁여놔서 일부 판매합니다.하루 1개씩 급여하면 치아 건강 관리 되고 입냄새 제거돼요소형견용 사이즈로 5~10kg 강아지에게 적합할 것 같아요!",
+      "extra": {
+        "pet": "dog",
+        "mainCategory": "treat",
+        "subCategory": "gum",
+        "condition": "used",
+        "tradeType": "direct",
+        "tradeLocation": "구로구"
+      }
+    },
+    {
+      "seller_id": 2,
+      "price": 5000,
+      "show": true,
+      "active": true,
+      "name": "페디그리 덴타스틱스 중대형견용4개",
+      "quantity": 1,
+      "buyQuantity": 0,
+      "mainImages": [
+        {
+          "path": "uploadFiles/gum2.png",
+          "name": "gum2.png"
+        }
+      ],
+      "content": "페디그리 덴타스틱스 중대형견용입니다! 3개 급여하고 4개 남았어요…X자 모양이라 씹으면서 치석 제거 효과 좋습니다대형견용입니다.우리 애가 이제 안 먹는데 버리기 아까워서 내놔요 \n유통기한 : 2026년 08월 22일",
+      "extra": {
+        "pet": "dog",
+        "mainCategory": "treat",
+        "subCategory": "gum",
+        "condition": "used",
+        "tradeType": "direct",
+        "tradeLocation": "영등포구"
+      }
+    },
+    {
+      "seller_id": 4,
+      "price": 12000,
+      "show": true,
+      "active": true,
+      "name": "오도독 소가죽 츄잉스틱 500g짜리 3개",
+      "quantity": 1,
+      "buyQuantity": 0,
+      "mainImages": [
+        {
+          "path": "uploadFiles/gum3.png",
+          "name": "gum3.png"
+        },
+        {
+          "path": "uploadFiles/gum3-1.png",
+          "name": "gum3-1.png"
+        }
+      ],
+      "content": "오도독 소가죽 츄잉스틱 500g짜리 3개입니다! 50g 정도 급여하고 350g 남았습니다 100% 소가죽으로 만든 자연 껌이에요 질기고 오래 씹을 수 있어서 스트레스 해소에 좋아요",
+      "extra": {
+        "pet": "dog",
+        "mainCategory": "treat",
+        "subCategory": "gum",
+        "condition": "used",
+        "tradeType": "direct",
+        "tradeLocation": "구로구"
+      }
+    },
+    {
+      "seller_id": 3,
+      "price": 8000,
+      "show": true,
+      "active": true,
+      "name": "댕댕이 국민 간식 져키 스틱 저렴하게 팔아요",
+      "quantity": 1,
+      "buyQuantity": 0,
+      "mainImages": [
+        {
+          "path": "uploadFiles/gum4.png",
+          "name": "gum4.png"
+        },
+        {
+          "path": "uploadFiles/gum4-1.png",
+          "name": "gum4-1.png"
+        }
+      ],
+      "content": "져키 스틱 8개 급여하고 12개 남았어요 닭가슴살로 만든 부드러운 져키 타입 껌입니다 딱딱한 껌 못 씹는 강아지나 노견에게 좋아요 개별 포장이라 위생적이고 보관 편합니다 \n유통기한 : 2026년 09월 07일",
+      "extra": {
+        "pet": "dog",
+        "mainCategory": "treat",
+        "subCategory": "gum",
+        "condition": "used",
+        "tradeType": "direct",
+        "tradeLocation": "중구"
+      }
+    },
+    {
+      "seller_id": 4,
+      "price": 8000,
+      "show": true,
+      "active": true,
+      "name": "천연 소힘줄 껌 5개 일괄",
+      "quantity": 1,
+      "buyQuantity": 0,
+      "mainImages": [
+        {
+          "path": "uploadFiles/gum5.png",
+          "name": "gum5.png"
+        },
+        {
+          "path": "uploadFiles/gum5-1.png",
+          "name": "gum5-1.png"
+        }
+      ],
+      "content": "천연 소힘줄 껌이고 2개 급여하고 5개 남았어요 자연 그대로 말린 제품이라 첨가물 거의 없어요 질겨서 오래 씹어요 씹는 거 좋아하는 강아지한테 추천해요 🐶 \n유통기한 : 2027년 01월 12일",
+      "extra": {
+        "pet": "dog",
+        "mainCategory": "treat",
+        "subCategory": "gum",
+        "condition": "used",
+        "tradeType": "direct",
+        "tradeLocation": "중구"
+      }
+    },
+    {
+      "seller_id": 2,
+      "price": 7000,
+      "show": true,
+      "active": true,
+      "name": "덴탈껌 혼합 (소형견용) 싸게 가져가세요",
+      "quantity": 1,
+      "buyQuantity": 0,
+      "mainImages": [
+        {
+          "path": "uploadFiles/gum6.png",
+          "name": "gum6.png"
+        },
+        {
+          "path": "uploadFiles/gum6-1.png",
+          "name": "gum6-1.png"
+        }
+      ],
+      "content": "덴탈껌 혼합 (소형견용)이고 여러 종류 섞여 있어요 다 소형견용이고 유통기한 넉넉해요 우리 애 입이 짧아서 안 먹는 것만 정리해요ㅠ 치아 관리용으로 무난한 제품들이에요",
+      "extra": {
+        "pet": "dog",
+        "mainCategory": "treat",
+        "subCategory": "gum",
+        "condition": "used",
+        "tradeType": "direct",
+        "tradeLocation": "중랑구"
+      }
+    },
+    {
+      "seller_id": 3,
+      "price": 15000,
+      "show": true,
+      "active": true,
+      "name": "닥터독 덴탈껌 소형견용 미개봉 새상품",
+      "quantity": 1,
+      "buyQuantity": 0,
+      "mainImages": [
+        {
+          "path": "uploadFiles/gum7.png",
+          "name": "gum7.png"
+        },
+        {
+          "path": "uploadFiles/gum7-1.png",
+          "name": "gum7-1.png"
+        },
+        {
+          "path": "uploadFiles/gum7-2.png",
+          "name": "gum7-2.png"
+        }
+      ],
+      "content": "닥터독 덴탈껌 소형견용이고 미개봉 새상품이에요! 소형견 키우면서 쟁여뒀는데 너무 많아서 내놔요 😅 말랑한 편이라 소형견도 잘 씹어요 하루 1개씩 주면 치석 관리랑 입냄새 관리에 도움돼요 \n유통기한 : 2027년 03월 18일",
+      "extra": {
+        "pet": "dog",
+        "mainCategory": "treat",
+        "subCategory": "gum",
+        "condition": "used",
+        "tradeType": "direct",
+        "tradeLocation": "강동구"
+      }
+    },
+    {
+      "seller_id": 4,
+      "price": 9000,
+      "show": true,
+      "active": true,
+      "name": "네츄럴 소가죽 롤껌 대형견용 싸게 팝니다",
+      "quantity": 1,
+      "buyQuantity": 0,
+      "mainImages": [
+        {
+          "path": "uploadFiles/gum8.png",
+          "name": "gum8.png"
+        }
+      ],
+      "content": "네츄럴 소가죽 롤껌 대형견용이고 질겨서 오래 씹는 타입이에요 씹는 거 좋아하는 아이들 시간 보내기 좋아요 대형견용이라 소형견은 조금 클 수 있어요 보관만 해둔 상태라 상태 좋아요 😊 \n유통기한 : 2026년 10월 27일",
+      "extra": {
+        "pet": "dog",
+        "mainCategory": "treat",
+        "subCategory": "gum",
+        "condition": "used",
+        "tradeType": "delivery",
+        "tradeLocation": "강동구"
+      }
+    },
+    {
+      "seller_id": 2,
+      "price": 12000,
+      "show": true,
+      "active": true,
+      "name": "몽슈슈 강아지 민소매 티셔츠 S 사이즈",
+      "quantity": 1,
+      "buyQuantity": 0,
+      "mainImages": [
+        {
+          "path": "uploadFiles/sleeveless1.png",
+          "name": "sleeveless1.png"
+        },
+        {
+          "path": "uploadFiles/sleeveless1-1.png",
+          "name": "sleeveless1-1.png"
+        },
+        {
+          "path": "uploadFiles/sleeveless1-2.png",
+          "name": "sleeveless1-2.png"
+        }
+      ],
+      "content": "몽슈슈 강아지 민소매 티셔츠 S 사이즈이고 여름에 입히려고 샀는데 사이즈가 조금 작았어요 원단 부드럽고 얇아서 여름용으로 좋아요 실내복이나 산책용으로 괜찮아요 2~3번 입힌 정도예요 상태 깨끗합니다",
+      "extra": {
+        "pet": "dog",
+        "mainCategory": "clothing",
+        "subCategory": "sleeveless",
+        "condition": "used",
+        "tradeType": "direct",
+        "tradeLocation": "강동구"
+      }
+    },
+    {
+      "seller_id": 4,
+      "price": 6000,
+      "show": true,
+      "active": true,
+      "name": "강아지 여름 민소매 티 (소형견)",
+      "quantity": 1,
+      "buyQuantity": 0,
+      "mainImages": [
+        {
+          "path": "uploadFiles/sleeveless2.png",
+          "name": "sleeveless2.png"
+        }
+      ],
+      "content": "강아지 여름 민소매 티 (소형견)이고 인터넷으로 샀는데 우리 애한테는 조금 커요 ㅠㅠㅠ 면이라 시원하고 가볍고 진짜 귀여워요 편하게 입힐 분 가져가세요",
+      "extra": {
+        "pet": "dog",
+        "mainCategory": "clothing",
+        "subCategory": "sleeveless",
+        "condition": "used",
+        "tradeType": "direct",
+        "tradeLocation": "마포구"
+      }
+    },
+    {
+      "seller_id": 3,
+      "price": 18000,
+      "show": true,
+      "active": true,
+      "name": "펫파라다이스 강아지 민소매 쿨링 나시 xl",
+      "quantity": 1,
+      "buyQuantity": 0,
+      "mainImages": [
+        {
+          "path": "uploadFiles/sleeveless3.png",
+          "name": "sleeveless3.png"
+        }
+      ],
+      "content": "펫파라다이스 강아지 민소매 쿨링 나시 xl사이즈고 여름 산책용으로 샀던 옷이에요 쿨링 원단이라 더운 날 입히기 좋아요 디자인 예뻐서 사진도 잘 나와요 !!!!!!!",
+      "extra": {
+        "pet": "dog",
+        "mainCategory": "clothing",
+        "subCategory": "sleeveless",
+        "condition": "used",
+        "tradeType": "direct",
+        "tradeLocation": "관악구"
+      }
+    },
+    {
+      "seller_id": 3,
+      "price": 6000,
+      "show": true,
+      "active": true,
+      "name": "강아지 주황색 여름 민소매 티 (소형견)",
+      "quantity": 1,
+      "buyQuantity": 0,
+      "mainImages": [
+        {
+          "path": "uploadFiles/sleeveless4.png",
+          "name": "sleeveless4.png"
+        },
+        {
+          "path": "uploadFiles/sleeveless4-1.png",
+          "name": "sleeveless4-1.png"
+        }
+      ],
+      "content": "강아지 주황색 여름 민소매 티이고 가슴둘레 약 34cm / 등길이 약 24cm 몸무게 3~4kg 정도 아이한테 맞을 것 같아요 면이라 시원하고 가벼워요 집에서 잠깐 입혀봤어요 세탁 1회 했습니다",
+      "extra": {
+        "pet": "dog",
+        "mainCategory": "clothing",
+        "subCategory": "sleeveless",
+        "condition": "used",
+        "tradeType": "direct",
+        "tradeLocation": "서대문구"
+      }
+    },
+    {
+      "seller_id": 2,
+      "price": 14000,
+      "show": true,
+      "active": true,
+      "name": "피카노리 쿨 나시 M",
+      "quantity": 1,
+      "buyQuantity": 0,
+      "mainImages": [
+        {
+          "path": "uploadFiles/sleeveless5.png",
+          "name": "sleeveless5.png"
+        }
+      ],
+      "content": "피카노리 쿨 나시 M 사이즈 / 가슴둘레 약 40cm 몸무게 5~6kg 아이한테 맞았어요 쿨링 원단이라 더운 날 좋아요 산책용으로 몇 번 입혔어요 세탁 후 보관 중입니다",
+      "extra": {
+        "pet": "dog",
+        "mainCategory": "clothing",
+        "subCategory": "sleeveless",
+        "condition": "used",
+        "tradeType": "direct",
+        "tradeLocation": "성동구"
+      }
+    },
+    {
+      "seller_id": 4,
+      "price": 5000,
+      "show": true,
+      "active": true,
+      "name": "강아지 민소매 옷 1벌 정리",
+      "quantity": 1,
+      "buyQuantity": 0,
+      "mainImages": [
+        {
+          "path": "uploadFiles/sleeveless6.png",
+          "name": "sleeveless6.png"
+        }
+      ],
+      "content": "강아지 민소매 옷이고 가슴둘레 약 34cm 몸무게 3~4kg 아이한테 맞아요 집에서 편하게 입히던 옷이에요 상태 무난합니다 네고 조금 가능해요 😊",
+      "extra": {
+        "pet": "dog",
+        "mainCategory": "clothing",
+        "subCategory": "sleeveless",
+        "condition": "used",
+        "tradeType": "direct",
+        "tradeLocation": "송파구"
+      }
+    },
+    {
+      "seller_id": 3,
+      "price": 9000,
+      "show": true,
+      "active": true,
+      "name": "대형견 여름 민소매 티 (랩도그용)",
+      "quantity": 1,
+      "buyQuantity": 0,
+      "mainImages": [
+        {
+          "path": "uploadFiles/sleeveless7.png",
+          "name": "sleeveless7.png"
+        }
+      ],
+      "content": "대형견 여름 민소매 티 (랩도그용)이고 가슴둘레 약 75cm / 등길이 약 52cm 몸무게 30kg 전후 아이 기준이에요 브랜드는 기억 안 나는데 원단 괜찮아요 집이랑 마당에서만 입혔어요 편하게 입히실 분 추천해요",
+      "extra": {
+        "pet": "dog",
+        "mainCategory": "clothing",
+        "subCategory": "sleeveless",
+        "condition": "used",
+        "tradeType": "direct",
+        "tradeLocation": "종로구"
+      }
+    },
+    {
+      "seller_id": 3,
+      "price": 22000,
+      "show": true,
+      "active": true,
+      "name": "펫파라다이스 대형견 민소매 XXL",
+      "quantity": 1,
+      "buyQuantity": 0,
+      "mainImages": [
+        {
+          "path": "uploadFiles/sleeveless8.png",
+          "name": "sleeveless8.png"
+        }
+      ],
+      "content": "펫파라다이스 대형견 민소매 XXL 사이즈이고 몸무게 32~38kg 스탠다드 푸들 아이한테 맞았어요 얇고 통풍 잘 돼서 여름용으로 좋아요 대형견 옷이라 튼튼한 편이에요 사용감 거의 없어요 ",
+      "extra": {
+        "pet": "dog",
+        "mainCategory": "clothing",
+        "subCategory": "sleeveless",
+        "condition": "used",
+        "tradeType": "direct",
+        "tradeLocation": "동대문구"
+      }
+    }
+  ],
   "order": [],
   "review": [],
   "cart": [],

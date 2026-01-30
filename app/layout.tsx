@@ -1,4 +1,6 @@
-import "./globals.css";
+import SplashScreen from '@/components/common/SplashScreen';
+import './globals.css';
+import { Suspense } from 'react';
 
 export default function RootLayout({
   children,
@@ -7,7 +9,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko">
-      <body>{children}</body>
+      <body>
+        <Suspense fallback={<SplashScreen />}>{children}</Suspense>
+      </body>
     </html>
   );
 }

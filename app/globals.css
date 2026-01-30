@@ -1,1 +1,64 @@
-@import "tailwindcss";
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+@import 'tailwindcss';
+
+:root {
+  --primary-500: #60cfff;
+  --primary-200: #e8f8ff;
+
+  --neutral-050: #ffffff;
+  --neutral-100: #f4f5fa;
+  --neutral-200: #e5e5ea;
+  --neutral-300: #d2d4da;
+  --neutral-500: #8a8f99;
+  --neutral-900: #0f1218;
+
+  --error-500: #ff4646;
+
+  /* font */
+  --base-font-family: 'Pretendard', sans-serif;
+}
+
+@theme {
+  /* brand */
+  --color-br-primary-500: var(--primary-500);
+  --color-br-primary-200: var(--primary-200);
+
+  /* input type1 */
+  --color-br-input-disabled-line: var(--neutral-200);
+  --color-br-input-disabled-text: var(--neutral-500);
+  --color-br-input-active-line: var(--neutral-500);
+  --color-br-input-active-text: var(--neutral-900);
+
+  /* input type2 */
+  --color-br-input2-disabled-bg: var(--neutral-100);
+  --color-br-input2-disabled-line: var(--neutral-500);
+  --color-br-input2-disabled-text: var(--neutral-500);
+
+  /* button */
+  --color-br-button-disabled-bg: var(--neutral-300);
+  --color-br-button-disabled-text: var(--neutral-500);
+
+  --color-br-button-active-bg: var(--primary-500);
+  --color-br-button-active-text: var(--neutral-050);
+
+  --color-br-button-more-bg: var(--neutral-100);
+  --color-br-button-more-text: var(--neutral-500);
+
+  /* chip */
+  --color-br-chip-disabled-bg: var(--neutral-050);
+  --color-br-chip-disabled-line: var(--neutral-200);
+  --color-br-chip-disabled-text: var(--neutral-500);
+
+  --color-br-chip-active-bg: var(--primary-200);
+  --color-br-chip-active-line: var(--primary-500);
+  --color-br-chip-active-text: var(--primary-500);
+
+  /*error*/
+  --color-br-error: var(--error-500);
+
+  /* font */
+  --color-br-text-body: var(--neutral-900);
+  --color-br-text-reverse: var(--neutral-050);
+
+  --font-pretendard: var(--base-font-family);
+}
