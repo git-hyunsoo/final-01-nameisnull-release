@@ -32,7 +32,6 @@ export default function MyPage() {
       <div className="font-pretendard pb-20">
         {/* 2. 프로필 섹션 */}
         <section className="px-4 py-4 flex items-center gap-3 mb-2">
-          {/* ✨ 프로필 이미지 + 아이콘 */}
           <label htmlFor="profileUpload" className="relative cursor-pointer">
             <img
               src={previewImage}
@@ -75,9 +74,7 @@ export default function MyPage() {
 
           <div className="p-4 border border-br-input-disabled-line rounded-xl">
             <div className="flex gap-6">
-              {/* 왼쪽: 정보 + 버튼 */}
               <div className="flex-1 p-3">
-                {/* 정보 (dl/dt/dd) */}
                 <dl className="space-y-2 mb-4">
                   <div className="flex text-sm">
                     <dt className="text-br-primary-500 w-16">
@@ -104,7 +101,6 @@ export default function MyPage() {
                     <dd className="text-br-text-body">시니어 (7살~)</dd>
                   </div>
                 </dl>
-                {/* 버튼 */}
                 <Link
                   href="/mypage/petedit"
                   className="flex justify-center items-center w-full h-8 text-sm font-light bg-br-input2-disabled-bg text-br-input2-disabled-text rounded-xl"
@@ -126,10 +122,7 @@ export default function MyPage() {
           <h3 className="text-lg font-semibold mb-4">나의 관심</h3>
 
           <div className="flex py-4">
-            <Link
-              href="/mypage/wishlist"
-              className="flex-1 flex flex-col items-center gap-2"
-            >
+            <Link href="/" className="flex-1 flex flex-col items-center gap-2">
               <Image
                 src="/icons/heart-line.svg"
                 alt=""
@@ -145,10 +138,7 @@ export default function MyPage() {
             {/* 구분선 */}
             <div className="w-px bg-br-input-disabled-line"></div>
 
-            <Link
-              href="/mypage/history"
-              className="flex-1 flex flex-col items-center gap-2"
-            >
+            <Link href="/" className="flex-1 flex flex-col items-center gap-2">
               <Image
                 src="/icons/recently.svg"
                 alt=""

@@ -1,18 +1,27 @@
 import Image from 'next/image';
+import { User } from '@/types/user';
+
+interface SellerProfileBarProps {
+  seller: User;
+  rating: number;
+}
 
 // 상품 상세 페이지 - 판매자 프로필 바
-export default function SellerProfileBar() {
+export default function SellerProfileBar({
+  seller,
+  rating,
+}: SellerProfileBarProps) {
   return (
     <>
       <section className="flex items-center gap-3">
         <img
-          src="https://res.cloudinary.com/ddedslqvv/image/upload/v1769060488/febc15-final01-ecad/UpcxMNkBGb.png"
+          src={seller.image}
           alt="판매자"
           className="w-11 h-11 rounded-full object-cover"
         />
 
         <span className="text-lg font-regular text-br-text-body">
-          프루프루룰루
+          {seller.name}
         </span>
 
         <div className="flex items-center gap-1 ml-auto">
@@ -28,7 +37,7 @@ export default function SellerProfileBar() {
               젤리 지수
             </span>
             <span className="text-xl font-light text-br-text-body leading-none">
-              4.0
+              {rating?.toFixed(1) || '0.0'}
             </span>
           </div>
         </div>

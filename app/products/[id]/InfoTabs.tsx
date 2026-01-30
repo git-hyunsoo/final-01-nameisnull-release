@@ -9,10 +9,10 @@ export default function InfoTabs({ activeTab, onTabChange }: InfoTabsProps) {
     <div className="flex border-b border-[#F4F5FA]" role="tablist">
       <button
         role="tab"
-        aria-selected={activeTab === 'product'}
-        onClick={() => onTabChange('product')}
+        aria-selected={activeTab === 'productInfo'}
+        onClick={() => onTabChange('productInfo')}
         className={`flex-1 py-3 text-center text-base ${
-          activeTab === 'product'
+          activeTab === 'productInfo'
             ? 'border-b-2 border-br-primary-500 text-br-neutral-900'
             : 'text-br-input-disabled-text'
         }`}
@@ -21,10 +21,10 @@ export default function InfoTabs({ activeTab, onTabChange }: InfoTabsProps) {
       </button>
       <button
         role="tab"
-        aria-selected={activeTab === 'seller'}
-        onClick={() => onTabChange('seller')}
+        aria-selected={activeTab === 'sellerInfo'}
+        onClick={() => onTabChange('sellerInfo')}
         className={`flex-1 py-3 text-center text-base ${
-          activeTab === 'seller'
+          activeTab === 'sellerInfo'
             ? 'border-b-2 border-br-primary-500 text-br-neutral-900'
             : 'text-br-input-disabled-text'
         }`}

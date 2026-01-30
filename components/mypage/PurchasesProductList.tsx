@@ -1,14 +1,12 @@
-// 마이페이시 > 구매내역 > 상품 컴포넌트
+// 마이페이지 > 구매내역 > 상품 컴포넌트
+import { PurchaseList } from '@/types/product';
 import Image from 'next/image';
 import Link from 'next/link';
 
 export default function PurchasesProductList() {
   return (
     <div className="relative mr-4">
-      <Link
-        href={`/products/{id}`}
-        className="relative flex flex-row mt-4.25 gap-4 m-4 mr-4"
-      >
+      <Link href="/" className="relative flex flex-row mt-4.25 gap-4 m-4 mr-4">
         {/* 썸네일 */}
         <div className="relative w-21 h-21 overflow-hidden rounded-xl shrink-0">
           <Image
@@ -57,7 +55,7 @@ export default function PurchasesProductList() {
       </Link>
       {/* 발자국 등록 버튼 */}
       <Link
-        href="/review"
+        href="/"
         className="absolute bottom-1 right-0 flex items-center justify-center font-pretendard px-3 py-2 w-23 h-8 text-sm bg-br-chip-active-bg text-br-chip-active-text rounded-xl z-10"
       >
         발자국 등록

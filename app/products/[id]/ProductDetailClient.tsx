@@ -1,4 +1,3 @@
-//브라우저에서 실행되는 리액트 컴포넌트
 'use client';
 
 import { useState } from 'react';
@@ -9,14 +8,16 @@ import SellerProfileBar from '@/app/products/[id]/SellerProfileBar';
 import InfoTabs from '@/app/products/[id]/InfoTabs';
 import ProductInfoTab from '@/app/products/[id]/ProductInfoTab';
 import SellerInfoTab from '@/app/products/[id]/SellerInfoTab';
-import { ProductDetail } from '@/types/product';
+import { ProductDetail, SellerProductList } from '@/types/product';
 
-interface Props {
-  product: ProductDetail;
-}
-
-export default function ProductDetailClient({ product }: Props) {
-  const [activeTab, setActiveTab] = useState('product');
+export default function ProductDetailClient({
+  detail,
+  sellerProducts,
+}: {
+  detail: ProductDetail;
+  sellerProducts: SellerProductList[];
+}) {
+  const [activeTab, setActiveTab] = useState('productInfo');
 
   return (
     <>
@@ -24,15 +25,17 @@ export default function ProductDetailClient({ product }: Props) {
         <Header title="상품 상세" />
 
         <ProductDetailImage
-          mainImages={product.mainImages.map(imng => imng.path)}
+          mainImages={detail.mainImages.map(img => img.path)}
         />
 
         <div className="px-4 py-4">
-          <SellerProfileBar />
+          <SellerProfileBar seller={detail.seller} rating={detail.rating} />
           <InfoTabs activeTab={activeTab} onTabChange={setActiveTab} />
 
-          {activeTab === 'product' && <ProductInfoTab />}
-          {activeTab === 'seller' && <SellerInfoTab />}
+          {activeTab === 'productInfo' && <ProductInfoTab detail={detail} />}
+          {activeTab === 'sellerInfo' && (
+            <SellerInfoTab detail={detail} sellerProducts={sellerProducts} />
+          )}
 
           <ProductDetailFooter />
         </div>

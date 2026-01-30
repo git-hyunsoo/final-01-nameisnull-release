@@ -15,7 +15,7 @@ export default function ProductCard({
   console.log(mainImages);
   // 뭐가 나오는지 확인
   return (
-    <Link href={`/products/{1}`}>
+    <Link href={`/products/${_id}`}>
       <div className="aspect-square rounded-lg overflow-hidden bg-gray-100">
         <Image
           src={mainImages[0].path}

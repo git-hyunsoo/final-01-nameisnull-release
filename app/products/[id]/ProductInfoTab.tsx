@@ -1,4 +1,6 @@
-export default function ProductInfoTab() {
+import { ProductDetail } from '@/types/product';
+
+export default function ProductInfoTab({ detail }: { detail: ProductDetail }) {
   return (
     <>
       {/* 상품 정보 탭 */}
@@ -15,15 +17,13 @@ export default function ProductInfoTab() {
         >
           판매 중
         </span>
-        <h2 className="mb-2 text-lg font-semibold break-all">
-          고양이 쥐 장난감 팔아요 🐭
-        </h2>
-        <p className="mb-2 text-2xl font-bold text-br-primary-500">5,000원</p>
+        <h2 className="mb-2 text-lg font-semibold break-all">{detail.name}</h2>
+        <p className="mb-2 text-2xl font-bold text-br-primary-500">
+          {detail.price.toLocaleString()}원
+        </p>
 
         <article className="font-light break-all mb-2">
-          <p>고양이들 좋아 죽는 쥐 인형 팝니다 !</p>
-          <p>장난감으로 딱이에요</p>
-          <p>여러 개 샀는데 우리 고양이는 안 가지고 노네요 .....</p>
+          {detail.content}
         </article>
 
         {/* 조회수/찜 수*/}
@@ -36,7 +36,7 @@ export default function ProductInfoTab() {
               height={16}
               className="brightness-30"
             />
-            <span>103</span>
+            <span>{detail.views}</span>
           </div>
 
           <div className="flex items-center gap-1">
@@ -47,7 +47,7 @@ export default function ProductInfoTab() {
               height={16}
               className="grayscale opacity-80"
             />
-            <span>2</span>
+            <span>{detail.bookmarks}</span>
           </div>
         </div>
 
@@ -63,14 +63,22 @@ export default function ProductInfoTab() {
               <dt className="text-sm font-light text-br-input-disabled-text">
                 상품 상태
               </dt>
-              <dd className="text-sm font-light text-br-text-body">새상품</dd>
+              <dd className="text-sm font-light text-br-text-body">
+                {detail.extra.condition === 'new' ? '새상품' : '중고'}
+              </dd>
             </div>
 
             <div className="flex justify-between items-center">
               <dt className="text-sm text-br-input-disabled-text font-light">
                 희망 거래 방식
               </dt>
-              <dd className="text-sm font-light text-br-text-body">직거래</dd>
+              <dd className="text-sm font-light text-br-text-body">
+                {detail.extra.tradeType === 'delivery'
+                  ? '택배'
+                  : detail.extra.tradeType === 'direct'
+                    ? '직거래'
+                    : '택배/직거래'}
+              </dd>
             </div>
 
             <div className="flex justify-between items-center">
@@ -78,7 +86,7 @@ export default function ProductInfoTab() {
                 희망 거래 장소
               </dt>
               <dd className="text-sm text-br-text-body font-light">
-                종각역 1번 출구
+                {detail.extra.tradeLocation}
               </dd>
             </div>
           </dl>

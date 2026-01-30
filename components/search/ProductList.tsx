@@ -4,10 +4,7 @@ import Link from 'next/link';
 export default function ProductList() {
   return (
     <>
-      <Link
-        href={`/products/{id}`}
-        className="flex flex-row w-full mt-4.25 gap-4"
-      >
+      <Link href={`/products/1`} className="flex flex-row w-full mt-4.25 gap-4">
         {/* 썸네일 */}
         <div className="relative w-21 h-21 overflow-hidden rounded-xl shrink-0">
           <Image
