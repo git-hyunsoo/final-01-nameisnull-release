@@ -30,13 +30,14 @@ export interface Product {
   rating: number;
 }
 
+// 임베딩 된 상품 목록 조회
+export type EmbeddingProducts = Array<Pick<Product, '_id' | 'extra'>>;
+
 // 검색 결과용 Product
 export type ProductSearchList = Pick<
   Product,
-  '_id' | 'name' | 'price' | 'mainImages' | 'bookmarks'
-> & {
-  similarity: number; // 유사도
-};
+  '_id' | 'name' | 'price' | 'mainImages' | 'bookmarks' | 'views'
+>;
 
 // 검색 결과 응답 타입 -> 얘만 따로
 export interface ProductSearchListRes {
@@ -111,6 +112,7 @@ export interface UserReview {
   };
   rating: number;
   content: string;
+  createdAt: string;
 }
 
 // 구매 후기 등록

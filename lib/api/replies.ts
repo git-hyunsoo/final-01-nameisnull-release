@@ -1,13 +1,19 @@
 import { ApiListResponse } from '@/types/common';
-import { Product } from '@/types/product';
+import { UserReview } from '@/types/product';
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 const CLIENT_ID = process.env.NEXT_PUBLIC_CLIENT_ID || '';
 
+// 판매자 후기 API 응답용
+interface ProductDetailReplies {
+  _id: number;
+  replies: UserReview[];
+}
+
 // 판매자 후기 목록 조회
 export async function getUserReviews(
   seller_id: number
-): Promise<ApiListResponse<Product>> {
+): Promise<ApiListResponse<UserReview>> {
   try {
     const res = await fetch(`${API_URL}/replies/seller/${seller_id}`, {
       headers: {
@@ -15,9 +21,20 @@ export async function getUserReviews(
       },
     });
 
-    return res.json();
+    const data = await res.json();
+
+    if (data.ok === 1 && Array.isArray(data.item)) {
+      const allReviews = data.item.flatMap(
+        (product: ProductDetailReplies) => product.replies || []
+      );
+      return {
+        ok: 1,
+        item: allReviews,
+      };
+    }
+
+    return data;
   } catch (error) {
-    // 네트워크 오류 처리
     console.error(error);
     return {
       ok: 0,

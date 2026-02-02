@@ -1,27 +1,31 @@
 import { ProductDetail } from '@/types/product';
 
+// 상품 정보 탭
 export default function ProductInfoTab({ detail }: { detail: ProductDetail }) {
   return (
     <>
-      {/* 상품 정보 탭 */}
       <div>
+        {/* 카테고리 */}
         <nav
           className="py-2 mt-2 mb-2 text-sm text-br-input-disabled-text"
           aria-label="상품 카테고리"
         >
           고양이 &gt; 용품 &gt; 장난감
         </nav>
+
+        {/* 판매 상태 */}
         <span
           className="mb-2 inline-block px-2 py-1 rounded-xl bg-br-primary-200 text-br-primary-500 border border-br-primary-500 text-xs"
           aria-label="판매 상태"
         >
           판매 중
         </span>
+
+        {/* 본문 */}
         <h2 className="mb-2 text-lg font-semibold break-all">{detail.name}</h2>
         <p className="mb-2 text-2xl font-bold text-br-primary-500">
           {detail.price.toLocaleString()}원
         </p>
-
         <article className="font-light break-all mb-2">
           {detail.content}
         </article>

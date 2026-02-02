@@ -11,6 +11,7 @@ export async function getProducts(): Promise<ApiListResponse<Product>> {
       headers: {
         'Client-Id': CLIENT_ID,
       },
+      cache: 'no-store',
     });
     return res.json();
   } catch (error) {
