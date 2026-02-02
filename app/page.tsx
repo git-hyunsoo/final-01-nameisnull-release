@@ -1,3 +1,4 @@
+export const dynamic = 'force-dynamic';
 import UnderBar from '@/components/common/Footer';
 import ProductPage from '@/app/products/page';
 

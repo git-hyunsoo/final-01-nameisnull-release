@@ -1,4 +1,4 @@
-// app/products/page.tsx
+export const dynamic = 'force-dynamic';
 import ProductHeader from '@/components/product/ProductHeader';
 import UnderBar from '@/components/common/Footer';
 import CategoryTab from '@/components/product/CategoryTab';
