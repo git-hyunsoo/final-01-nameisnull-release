@@ -12,13 +12,11 @@ export default function ProductCard({
   bookmarks,
   views,
 }: ProductList) {
-  console.log(mainImages);
-  // link id변경
   return (
     <Link href={`/products/${_id}`}>
       <div className="aspect-square rounded-lg overflow-hidden bg-gray-100">
         <Image
-          src={mainImages[0].path}
+          src={mainImages?.[0]?.path || '/icons/no-image.png'}
           alt={`${name} 이미지`}
           width={164}
           height={164}
@@ -26,7 +24,7 @@ export default function ProductCard({
         />
       </div>
       <p className="mt-2 font-semibold">{price.toLocaleString()}원</p>
-      <p className="mt-1.5 text-br-input-active-line">{name}</p>
+      <p className="mt-1.5 text-br-input-active-line truncate">{name}</p>
       <div className="flex gap-0.5 mt-2">
         <Image src="/icons/visile-gray.svg" alt="" width={12} height={8} />
         <span className="text-br-input-active-line text-[12px]">

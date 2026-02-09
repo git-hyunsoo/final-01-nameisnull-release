@@ -1,6 +1,7 @@
 // db에 등록된 모든 상품들 임베딩
 'use server';
 
+import { getProductDetail, getProducts } from '@/lib/api/products';
 import { ProductDetail, ProductList } from '@/types/product';
 import OpenAI from 'openai';
 
@@ -17,6 +18,50 @@ const openai = new OpenAI({
   apiKey: OPENAI_API_KEY,
 });
 
+// 카테고리 영어 → 한글 변환 맵
+const categoryMap: Record<string, string> = {
+  // 메인 카테고리
+  food: '사료',
+  treat: '간식',
+  supplies: '용품',
+  health: '건강',
+  clothing: '의류',
+  // 서브 카테고리 - 사료
+  dry: '건식',
+  wet: '습식',
+  'freeze-dried': '건조',
+  // 서브 카테고리 - 강아지 간식
+  gum: '껌',
+  jerky: '저키',
+  'dried-meat': '육포',
+  can: '캔',
+  biscuit: '비스킷',
+  // 서브 카테고리 - 고양이 간식
+  pouch: '파우치',
+  snack: '스낵',
+  'whole-meat': '통살',
+  catnip: '캣닢',
+  // 서브 카테고리 - 용품
+  hygiene: '위생',
+  toilet: '배변용품',
+  toy: '장난감',
+  outdoor: '외출',
+  mat: '방석',
+  litter: '모래',
+  tower: '캣타워',
+  scratcher: '스크래쳐',
+  // 서브 카테고리 - 건강
+  supplement: '보조제',
+  checkup: '건강검진',
+  skin: '피부',
+  ointment: '연고',
+  // 서브 카테고리 - 의류
+  accessory: '액세서리',
+  sleeveless: '민소매',
+  'all-in-one': '올인원',
+  outer: '아우터',
+};
+
 // 텍스트를 임베딩하는 함수
 async function getEmbedding(text: string): Promise<number[]> {
   const response = await openai.embeddings.create({
@@ -27,25 +72,41 @@ async function getEmbedding(text: string): Promise<number[]> {
   return response.data[0].embedding;
 }
 
+// 상품 정보로 임베딩용 텍스트 생성
+function createEmbeddingText(product: ProductDetail): string {
+  // 동물 종류 한글 변환
+  const petKorean = product.extra.pet === 'dog' ? '강아지' : '고양이';
+
+  // 카테고리 한글 변환
+  const mainCategoryKorean =
+    categoryMap[product.extra.mainCategory] || product.extra.mainCategory;
+  const subCategoryKorean = product.extra.subCategory
+    ? categoryMap[product.extra.subCategory] || product.extra.subCategory
+    : '';
+
+  // 구조화된 텍스트 생성
+  const embeddingText = `
+제목: ${product.name}
+카테고리: ${petKorean} ${mainCategoryKorean} ${subCategoryKorean}
+설명: ${product.content}
+`.trim();
+
+  // 최대 4000자로 제한 (안전하게)
+  return embeddingText.slice(0, 4000);
+}
+
 // 모든 상품의 content를 임베딩하여 extra.embedding에 저장
 // 최초 1회만 실행
 
 export async function AllProductEmbeddings() {
   try {
     // ------ 1. 상품 목록 조회 api ------
-    const listRes = await fetch(`${API_URL}/products`, {
-      headers: {
-        'Content-Type': 'application/json',
-        'Client-Id': CLIENT_ID!,
-      },
-    });
-
+    const listRes = await getProducts();
     if (!listRes.ok) {
-      throw new Error('상품 목록 가져오기 실패');
+      throw new Error(listRes.message);
     }
 
-    const listData = await listRes.json();
-    const products: ProductList[] = listData.item;
+    const products: ProductList[] = listRes.item;
 
     console.log(`총 ${products.length}개 상품 발견\n`);
 
@@ -57,17 +118,12 @@ export async function AllProductEmbeddings() {
 
       try {
         // 2.1 상품 상세 조회 api
-        const detailRes = await fetch(`${API_URL}/products/${productId}`, {
-          headers: {
-            'Content-Type': 'application/json',
-            'Client-Id': CLIENT_ID!,
-          },
-        });
+        const detailRes = await getProductDetail(productId.toString());
         if (!detailRes.ok) {
-          throw new Error('상품 상세 조회 실패');
+          throw new Error(detailRes.message);
         }
-        const detailData = await detailRes.json();
-        const productDetail: ProductDetail = detailData.item;
+
+        const productDetail: ProductDetail = detailRes.item;
 
         // 2.2 상품 설명이 없을 때
         if (!productDetail.content) {
@@ -81,8 +137,11 @@ export async function AllProductEmbeddings() {
           continue;
         }
 
-        // 2.4 상품 설명들 임베딩 작업
-        const embedding = await getEmbedding(productDetail.content);
+        // 2.4 임베딩용 텍스트 생성 (상품명 + 카테고리 + 설명)
+        const embeddingText = createEmbeddingText(productDetail);
+
+        // 2.5 상품 설명들 임베딩 작업
+        const embedding = await getEmbedding(embeddingText);
         console.log(`-> 임베딩 완료 ${embedding.length}개`);
 
         // ------ 3. 상품 수정 ------
@@ -113,5 +172,47 @@ export async function AllProductEmbeddings() {
   } catch (error) {
     console.error('전체 배치 실패', error);
     throw error;
+  }
+}
+
+// 상품 등록 시 임베딩 되도록 하는 단일 상품 임베딩 함수
+export async function embedSingleProduct(productId: number) {
+  try {
+    // 1. 상품 상세 조회 api
+    const detailRes = await getProductDetail(productId.toString());
+    if (!detailRes.ok) {
+      throw new Error(detailRes.message);
+    }
+
+    const productDetail: ProductDetail = detailRes.item;
+
+    // 2. 상품 임베딩용 텍스트 생성(카테고리 필터링)
+    const embeddingText = createEmbeddingText(productDetail);
+
+    // 3. 상품 임베딩 작업
+    const embedding = await getEmbedding(embeddingText);
+
+    const extra = productDetail.extra;
+    extra.embeddings = embedding;
+    const body = {
+      extra,
+    };
+
+    const editRes = await fetch(`${API_URL}/seller/products/${productId}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        'Client-Id': CLIENT_ID!,
+        Authorization: `Bearer ${ADMIN_TOKEN}`,
+      },
+      body: JSON.stringify(body),
+    });
+
+    if (!editRes.ok) {
+      const errText = await editRes.text();
+      throw new Error(`수정 실패: ${editRes.status} ${errText}`);
+    }
+  } catch (error) {
+    console.error('단일 상품 임베딩 실패:', error);
   }
 }

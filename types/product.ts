@@ -12,6 +12,9 @@ export interface Product {
   price: number;
   name: string;
   mainImages: ProductImages[];
+  image?: string;
+  quantity?: number;
+  buyQuantity?: number;
   show?: boolean;
   active?: boolean;
   createdAt: string;
@@ -31,18 +34,12 @@ export interface Product {
 }
 
 // 임베딩 된 상품 목록 조회
-export type EmbeddingProducts = Array<Pick<Product, '_id' | 'extra'>>;
-
-// 검색 결과용 Product
-export type ProductSearchList = Pick<
-  Product,
-  '_id' | 'name' | 'price' | 'mainImages' | 'bookmarks' | 'views'
->;
+export type EmbeddingProducts = Array<Pick<Product, '_id' | 'extra' | 'name'>>;
 
 // 검색 결과 응답 타입 -> 얘만 따로
 export interface ProductSearchListRes {
   ok: 1;
-  item: ProductSearchList[];
+  item: ProductList[];
   pagination: {
     page: number;
     limit: number;
@@ -56,6 +53,11 @@ export type ProductList = Pick<
   Product,
   '_id' | 'price' | 'name' | 'mainImages' | 'bookmarks' | 'views'
 >;
+
+// 상품 목록 페이지(embedding 제외한 타입)
+export type ProductWithoutEmbeddings = Omit<Product, 'extra'> & {
+  extra: Omit<Product['extra'], 'embeddings'>;
+};
 
 //상품 등록 페이지
 export interface SellerProduct {
@@ -78,6 +80,7 @@ export interface SellerProduct {
 export type ProductDetail = Product & {
   content: string;
   replies: UserReview[];
+  myBookmarkId?: number;
 };
 
 // 찜하기 요청
@@ -96,11 +99,40 @@ export interface OrderCorrection {
   quantity: number;
 }
 
+// 판매 확정 응답 타입
+export interface OrderItem {
+  _id: number;
+  user_id: number;
+  product_id: number;
+  quantity: number;
+  state: string;
+  products?: {
+    _id: number;
+    name: string;
+    price: number;
+    seller_id: number;
+    image?: {
+      path: string;
+      name: string;
+    };
+  }[];
+  createdAt: string;
+  updatedAt: string;
+  cost?: {
+    products: number;
+    shippingFees: number;
+    total: number;
+  };
+}
+
 // 판매자의 다른 상품 리스트, 판매 내역 페이지
 export type SellerProductList = Pick<
   Product,
-  '_id' | 'seller_id' | 'name' | 'mainImages' | 'price' | 'bookmarks'
->;
+  '_id' | 'seller_id' | 'name' | 'mainImages' | 'price' | 'bookmarks' | 'views'
+> & {
+  quantity: number;
+  buyQuantity: number;
+};
 
 //판매자 후기
 export interface UserReview {
@@ -136,10 +168,12 @@ export interface ProductTargetBookmark extends BookmarkResponse {
 }
 
 //공통부분 (찜목록 불러오기)
-export type BookmarkListRes = {
-  ok: 1;
-  item: ProductTargetBookmark[];
-};
+export type BookmarkListRes =
+  | {
+      ok: 1;
+      item: ProductTargetBookmark[];
+    }
+  | ApiError;
 
 // 찜 추가 응답
 export type BookmarkCreateRes =
@@ -157,9 +191,14 @@ export type BookmarkDeleteRes =
   | ApiError;
 
 // 구매 내역
-
 export interface PurchaseList {
   _id: number;
   user_id: number;
+  state: string;
   products: Product[];
+  cost?: {
+    products: number;
+    shippingFees: number;
+    total: number;
+  };
 }

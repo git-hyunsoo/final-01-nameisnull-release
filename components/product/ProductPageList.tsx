@@ -4,9 +4,13 @@
 import { usePetStore } from '@/store/petStore';
 import { categories } from '@/categories/categories';
 import ProductCard from './ProductCard';
-import { Product } from '@/types/product';
+import { ProductWithoutEmbeddings } from '@/types/product';
 
-export default function ProductPageList({ products }: { products: Product[] }) {
+export default function ProductPageList({
+  products,
+}: {
+  products: ProductWithoutEmbeddings[];
+}) {
   const { pet, selectedCategory, selectedSub, searchKeyword } = usePetStore();
 
   let petCategories;
@@ -55,7 +59,7 @@ export default function ProductPageList({ products }: { products: Product[] }) {
       </p>
 
       {/* 상품 목록 */}
-      <section className="grid grid-cols-2 gap-4 pb-20">
+      <section className="grid grid-cols-2 gap-4 pb-20 lg:grid-cols-6 lg:gap-x-6 lg:gap-y-12">
         {productsItem.map(product => (
           <ProductCard
             key={product._id}

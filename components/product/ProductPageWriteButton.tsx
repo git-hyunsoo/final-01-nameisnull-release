@@ -1,27 +1,26 @@
-//상품 목록 글쓰기 버튼
 'use client';
 
-//import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import useUserStore from '@/store/authStore';
 
 export default function ProductPageWriteButton() {
-  //로그인 구현 완료 후 추가 예정
-  // const router = useRouter();
+  const router = useRouter();
 
-  // const handleClick = (e: React.MouseEvent) => {
-  //   const token = localStorage.getItem('토큰이름');
+  const accessToken = useUserStore(state => state.accessToken);
 
-  //   if (!token) {
-  //     e.preventDefault();
-  //     router.push('/auth');
-  //   }
-  // };
+  const handleClick = (e: React.MouseEvent) => {
+    // 토큰이 없다면
+    if (!accessToken) {
+      e.preventDefault();
+      router.push('/auth');
+    }
+  };
 
   return (
-    <Link href="/products/new">
-      {/*onClick={handleClick}*/}
+    <Link href="/products/new" onClick={handleClick}>
       <button className="fixed bottom-20 right-4 bg-br-primary-500 z-10 text-[15px] text-white font-medium py-1.5 px-4.5 rounded-4xl shadow">
-        <span className="text-[18px]">+</span> 글쓰기
+        <span className="text-[18px] mr-1">+</span> 글쓰기
       </button>
     </Link>
   );

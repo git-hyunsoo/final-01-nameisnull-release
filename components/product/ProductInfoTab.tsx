@@ -1,3 +1,4 @@
+import ProductDetailCategory from '@/components/product/ProductDetailCategory';
 import { ProductDetail } from '@/types/product';
 
 // 상품 정보 탭
@@ -6,13 +7,7 @@ export default function ProductInfoTab({ detail }: { detail: ProductDetail }) {
     <>
       <div>
         {/* 카테고리 */}
-        <nav
-          className="py-2 mt-2 mb-2 text-sm text-br-input-disabled-text"
-          aria-label="상품 카테고리"
-        >
-          고양이 &gt; 용품 &gt; 장난감
-        </nav>
-
+        <ProductDetailCategory detail={detail} />
         {/* 판매 상태 */}
         <span
           className="mb-2 inline-block px-2 py-1 rounded-xl bg-br-primary-200 text-br-primary-500 border border-br-primary-500 text-xs"

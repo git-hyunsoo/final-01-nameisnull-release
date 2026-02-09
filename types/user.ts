@@ -6,7 +6,7 @@ export interface User {
   type: string;
   image?: string;
   extra?: {
-    pet: {
+    pet?: {
       type: 'dog' | 'cat';
       breed?: string;
       name: string;
@@ -15,6 +15,10 @@ export interface User {
       image?: string;
     };
     introduce: string;
+  };
+  token?: {
+    accessToken: string;
+    refreshToken: string;
   };
 }
 
@@ -69,3 +73,5 @@ export interface UpdateUser {
     introduce?: string;
   };
 }
+
+

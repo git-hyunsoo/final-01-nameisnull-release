@@ -4,6 +4,8 @@ import { ProductDetail, SellerProductList, UserReview } from '@/types/product';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
+import { formatDistanceToNow } from 'date-fns';
+import { ko } from 'date-fns/locale';
 
 // 판매자 정보 탭
 export default function SellerInfoTab({
@@ -110,7 +112,11 @@ export default function SellerInfoTab({
                         {reviewItem.content}
                       </p>
                       <span className="text-xs text-br-input-disabled-text">
-                        {reviewItem.user?.name || '익명'}
+                        {reviewItem.user?.name || '익명'} ·{' '}
+                        {formatDistanceToNow(new Date(reviewItem.createdAt), {
+                          addSuffix: true,
+                          locale: ko,
+                        })}
                       </span>
                     </div>
 
@@ -181,7 +187,9 @@ export default function SellerInfoTab({
                         "
                 >
                   <Image
-                    src={product.mainImages[0].path}
+                    src={
+                      product.mainImages?.[0]?.path || '/images/no-image.png'
+                    }
                     alt={product.name}
                     width={120}
                     height={120}

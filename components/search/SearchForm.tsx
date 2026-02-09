@@ -50,9 +50,6 @@ export default function SearchForm() {
         />
 
         <form onSubmit={handleSubmit}>
-          {/* 서버로 검색어 전달 */}
-          <input type="hidden" name="keyword" value={searchValue} />
-
           <input
             type="search"
             value={searchValue}

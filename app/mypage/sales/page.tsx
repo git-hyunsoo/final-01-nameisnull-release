@@ -2,12 +2,36 @@
 
 import UnderBar from '@/components/common/Footer';
 import Header from '@/components/common/Header';
-import ProductList from '@/components/search/ProductList';
-import { useState } from 'react';
+import Spinner from '@/components/common/Spinner';
+import SearchResultProduct from '@/components/search/SearchResultProduct';
+import { mypageSellerProductList } from '@/lib/api/products';
+import { SellerProductList } from '@/types/product';
+import { useEffect, useState } from 'react';
 
 //판매내역
 export default function SalesPage() {
   const [activeTab, setActiveTab] = useState('selling');
+  const [products, setProducts] = useState<SellerProductList[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchSellerProducts = async () => {
+      setIsLoading(true);
+
+      const response = await mypageSellerProductList();
+
+      if (response.ok === 1) {
+        setProducts(response.item);
+      }
+
+      setIsLoading(false);
+    };
+
+    fetchSellerProducts();
+  }, []);
+  // 판매 중 / 판매 완료 필터링
+  const sellingProducts = products.filter(p => p.buyQuantity === 0);
+  const soldProducts = products.filter(p => p.buyQuantity === 1);
 
   return (
     <>
@@ -41,30 +65,39 @@ export default function SalesPage() {
       </div>
       <div>
         {/* 상품 목록 */}
-        {/* 상품 목록 */}
-        <main className="flex-1 px-4">
+        <main className="font-pretendard flex-1 px-4 mb-20">
           {/* 판매 중 탭 */}
           {activeTab === 'selling' && (
             <>
-              <ProductList />
-              <ProductList />
-              <ProductList />
-              <ProductList />
-              <ProductList />
-              <ProductList />
-              <ProductList />
-              <ProductList />
-              <ProductList />
-              <ProductList />
+              {isLoading ? (
+                <Spinner />
+              ) : sellingProducts.length > 0 ? (
+                sellingProducts.map(product => (
+                  <SearchResultProduct key={product._id} product={product} />
+                ))
+              ) : (
+                <div className="text-center mt-20 text-gray-500 font-light">
+                  판매 중인 상품이 없습니다
+                </div>
+              )}
             </>
           )}
 
           {/* 판매 완료 탭 */}
           {activeTab === 'sold' && (
-            <>
-              <ProductList />
-              <ProductList />
-            </>
+            <div>
+              {isLoading ? (
+                <Spinner />
+              ) : soldProducts.length > 0 ? (
+                soldProducts.map(product => (
+                  <SearchResultProduct key={product._id} product={product} />
+                ))
+              ) : (
+                <div className="text-center mt-20 text-gray-500 font-light">
+                  판매 완료된 상품이 없습니다
+                </div>
+              )}
+            </div>
           )}
         </main>
         <UnderBar />
