@@ -10,7 +10,6 @@ export default function ProductPageWriteButton() {
   const accessToken = useUserStore(state => state.accessToken);
 
   const handleClick = (e: React.MouseEvent) => {
-    // 토큰이 없다면
     if (!accessToken) {
       e.preventDefault();
       router.push('/auth');

@@ -1,8 +1,8 @@
 // db에 등록된 모든 상품들 임베딩
 'use server';
 
-import { getProductDetail, getProducts } from '@/lib/api/products';
-import { ProductDetail, ProductList } from '@/types/product';
+import { getProductDetail } from '@/lib/api/products';
+import { ProductDetail } from '@/types/product';
 import OpenAI from 'openai';
 
 // 관리자 accessToken
@@ -85,19 +85,15 @@ function createEmbeddingText(product: ProductDetail): string {
     : '';
 
   // 구조화된 텍스트 생성
-  const embeddingText = `
-제목: ${product.name}
-카테고리: ${petKorean} ${mainCategoryKorean} ${subCategoryKorean}
-설명: ${product.content}
-`.trim();
-
-  // 최대 4000자로 제한 (안전하게)
+  const embeddingText =
+    `제목: ${product.name} 카테고리: ${petKorean} ${mainCategoryKorean} ${subCategoryKorean} 설명: ${product.content} `.trim();
+  // 최대 4000자로 제한
   return embeddingText.slice(0, 4000);
 }
 
 // 모든 상품의 content를 임베딩하여 extra.embedding에 저장
 // 최초 1회만 실행
-
+/*
 export async function AllProductEmbeddings() {
   try {
     // ------ 1. 상품 목록 조회 api ------
@@ -174,7 +170,7 @@ export async function AllProductEmbeddings() {
     throw error;
   }
 }
-
+*/
 // 상품 등록 시 임베딩 되도록 하는 단일 상품 임베딩 함수
 export async function embedSingleProduct(productId: number) {
   try {

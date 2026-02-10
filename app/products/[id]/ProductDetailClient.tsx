@@ -12,25 +12,23 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import ProductDetailFooter from '@/components/product/ProductDetailFooter';
 import { addRecentProduct } from '@/lib/utils/storage';
-import { getBookmarks } from '@/lib/api/bookmarks';
+import Image from 'next/image';
 
 // 상품 상세 페이지 - 클라이언트 컴포넌트
 export default function ProductDetailClient({
   detail,
   sellerProducts,
   review,
-  initialIsWished,
-  initialBookmarkId,
+  soldCount,
+  isSoldOut,
 }: {
   detail: ProductDetail;
   sellerProducts: SellerProductList[];
   review: UserReview[];
-  initialIsWished: boolean;
-  initialBookmarkId: number | null;
+  soldCount: number;
+  isSoldOut: boolean;
 }) {
   const [activeTab, setActiveTab] = useState('productInfo');
-  const [isWished, setIsWished] = useState(false);
-  const [bookmarkId, setBookmarkId] = useState<number | null>(null);
 
   // 최근 본 상품 저장
   useEffect(() => {
@@ -45,23 +43,6 @@ export default function ProductDetailClient({
         seller_id: detail.seller_id,
       });
     }
-  }, [detail._id]);
-
-  // 찜 상태 확인
-  useEffect(() => {
-    const checkWishStatus = async () => {
-      const bookmarkData = await getBookmarks();
-      if (bookmarkData.ok === 1) {
-        const myBookmark = bookmarkData.item.find(
-          bookmark => bookmark.product._id === detail._id
-        );
-        if (myBookmark) {
-          setIsWished(true);
-          setBookmarkId(myBookmark._id);
-        }
-      }
-    };
-    checkWishStatus();
   }, [detail._id]);
 
   return (
@@ -84,10 +65,11 @@ export default function ProductDetailClient({
         >
           {detail.mainImages.map((image, index) => (
             <SwiperSlide key={index}>
-              <img
+              <Image
                 src={image.path}
                 alt={`상품 이미지 ${index + 1}`}
                 className="w-full h-full object-cover"
+                fill
               />
             </SwiperSlide>
           ))}
@@ -125,13 +107,16 @@ export default function ProductDetailClient({
           </button>
         </nav>
         {/* 탭 & 본문 */}
-        {activeTab === 'productInfo' && <ProductInfoTab detail={detail} />}
+        {activeTab === 'productInfo' && (
+          <ProductInfoTab detail={detail} isSoldOut={isSoldOut} />
+        )}
         {activeTab === 'sellerInfo' && (
           <SellerInfoTab
             detail={detail}
             sellerProducts={sellerProducts}
             review={review}
             sellerReviews={review}
+            soldCount={soldCount}
           />
         )}
 
@@ -139,8 +124,6 @@ export default function ProductDetailClient({
         <ProductDetailFooter
           productId={detail._id}
           sellerId={detail.seller._id}
-          initialIsWished={isWished}
-          initialBookmarkId={bookmarkId}
         />
       </div>
     </div>

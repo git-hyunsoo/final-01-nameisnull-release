@@ -111,6 +111,14 @@ export default function useChat() {
     [chatSocket]
   );
 
+  // 채팅방 나갈 때 (페이지 이동 시)
+  const exitRoom = useCallback(() => {
+    if (chatSocket?.connected) {
+      chatSocket.emit('setActiveRoomId', null);
+    }
+    setActiveRoomId(undefined);
+  }, [chatSocket, setActiveRoomId]);
+
   return {
     chatSocket, // 채팅 소켓 객체
     messages: activeRoomId ? messagesByRoom[activeRoomId] || [] : [], // 현재 활성화된 방의 메시지 목록
@@ -121,5 +129,6 @@ export default function useChat() {
     enterRoom, // 방 입장 함수
     leaveRoom, // 방 나가기 함수
     sendMessage, // 메시지 전송 함수
+    exitRoom,
   };
 }

@@ -13,12 +13,15 @@ export default function SellerInfoTab({
   sellerProducts,
   review,
   sellerReviews,
+  soldCount,
 }: {
   detail: ProductDetail;
   sellerProducts: SellerProductList[];
   review: UserReview[];
   sellerReviews: UserReview[];
+  soldCount: number; // ← 타입 수정
 }) {
+  sellerProducts = sellerProducts.filter(product => product.buyQuantity === 0);
   const [showReviews, setShowReviews] = useState(false);
   const reviewList = showReviews ? review : review.slice(0, 3);
   const moreReviews = review.length > 3;
@@ -54,7 +57,7 @@ export default function SellerInfoTab({
           <div className="flex-1 text-center py-4">
             <div className="flex items-center justify-center gap-1 mb-0">
               <span className="text-lg text-br-text-body">{averageRating}</span>
-              <img
+              <Image
                 src="/icons/footer-mypage-fill.svg"
                 alt=""
                 width={20}
@@ -69,9 +72,7 @@ export default function SellerInfoTab({
           <div className="w-px bg-br-input-disabled-line"></div>
 
           <div className="flex-1 text-center py-4">
-            <div className="text-lg text-br-text-body">
-              {detail.replies.length}
-            </div>
+            <div className="text-lg text-br-text-body">{soldCount}</div>
             <div className="text-sm text-br-input-disabled-text">거래 횟수</div>
           </div>
         </div>
@@ -96,10 +97,12 @@ export default function SellerInfoTab({
                     className="flex gap-3 pt-4 pb-4 border-b border-br-input-disabled-line"
                   >
                     {reviewItem.user?.image ? (
-                      <img
+                      <Image
                         src={reviewItem.user.image}
                         alt="사용자"
                         className="w-10 h-10 rounded-full"
+                        width={10}
+                        height={10}
                       />
                     ) : (
                       <div className="w-10 h-10 rounded-full bg-gray-300 flex items-center justify-center">
@@ -121,10 +124,12 @@ export default function SellerInfoTab({
                     </div>
 
                     <div className="flex flex-col items-center gap-1">
-                      <img
+                      <Image
                         src="/icons/footer-mypage-fill.svg"
                         alt=""
                         className="w-4 h-4"
+                        width={4}
+                        height={4}
                       />
                       <span className="text-xs font-light text-br-text-body">
                         {reviewItem.rating}

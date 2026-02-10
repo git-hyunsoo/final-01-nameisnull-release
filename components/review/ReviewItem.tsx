@@ -9,6 +9,7 @@ import { postReview } from '@/lib/api/replies';
 import { getOrderDetail } from '@/lib/api/orders';
 import { getProductDetail } from '@/lib/api/products';
 import { OrderItem } from '@/types/product';
+import Spinner from '@/components/common/Spinner';
 
 export default function ReviewItem({ orderId }: { orderId: string }) {
   const router = useRouter();
@@ -86,14 +87,7 @@ export default function ReviewItem({ orderId }: { orderId: string }) {
   };
 
   if (loading) {
-    return (
-      <>
-        <Header title="발자국 등록" />
-        <div className="flex justify-center items-center h-screen">
-          <p>로딩 중...</p>
-        </div>
-      </>
-    );
+    return <Spinner />;
   }
 
   if (!order) return null;

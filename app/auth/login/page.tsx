@@ -22,7 +22,7 @@ export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false);
   const [isChecked, setIsChecked] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [checkingAuth, setCheckingAuth] = useState(true);
+  const [checkingAuth, setCheckingAuth] = useState(false); //<----무한 루프 수정
 
   const { setUser, setToken, setAutoLogin, user, accessToken } = useAuthStore();
   const router = useRouter();
@@ -88,7 +88,8 @@ export default function LoginPage() {
 
   // 자동 로그인 확인 중일 때 로딩 처리
   if (checkingAuth) {
-    return null;
+    return <div className="min-h-screen bg-white" />;
+    // return null; <----무한 루프 수정
   }
 
   /* ========== 랜더 ========== */

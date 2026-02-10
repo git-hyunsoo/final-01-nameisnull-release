@@ -41,6 +41,7 @@ export default function PurchasesPage() {
               <PurchasesProductList
                 key={`${order._id}-${product._id}`}
                 product={product}
+                orderId={order._id}
               />
             ))
           )

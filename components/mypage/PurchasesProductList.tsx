@@ -6,11 +6,17 @@ import Link from 'next/link';
 
 interface PurchasesProductListProps {
   product: Product;
+  orderId: number;
 }
 
 export default function PurchasesProductList({
   product,
+  orderId,
 }: PurchasesProductListProps) {
+  // 내가 이 상품에 리뷰 작성했는지 확인
+  const hasReview =
+    product.review_id !== undefined && product.review_id !== null;
+
   return (
     <div className="relative mr-4">
       <Link
@@ -20,13 +26,10 @@ export default function PurchasesProductList({
         {/* 썸네일 */}
         <div className="relative w-21 h-21 overflow-hidden rounded-xl shrink-0">
           <Image
-            src={
-              product.image ||
-              product.mainImages[0]?.path ||
-              '/images/default-product.png'
-            }
+            src={product.image?.path || product.mainImages[0].path}
             alt={product.name}
             fill
+            sizes="84px"
             className="object-cover"
           />
         </div>
@@ -72,12 +75,14 @@ export default function PurchasesProductList({
       </Link>
 
       {/* 발자국 등록 버튼 */}
-      <Link
-        href="/"
-        className="absolute bottom-1 right-0 flex items-center justify-center font-pretendard px-3 py-2 w-23 h-8 text-sm bg-br-chip-active-bg text-br-chip-active-text rounded-xl z-10"
-      >
-        발자국 등록
-      </Link>
+      {!hasReview && (
+        <Link
+          href={`/review/${orderId}`}
+          className="absolute bottom-1 right-0 flex items-center justify-center font-pretendard px-3 py-2 w-23 h-8 text-sm bg-br-chip-active-bg text-br-chip-active-text rounded-xl z-10"
+        >
+          발자국 등록
+        </Link>
+      )}
     </div>
   );
 }

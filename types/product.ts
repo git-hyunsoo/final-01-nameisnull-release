@@ -12,7 +12,10 @@ export interface Product {
   price: number;
   name: string;
   mainImages: ProductImages[];
-  image?: string;
+  image?: {
+    path: string;
+    name: string;
+  };
   quantity?: number;
   buyQuantity?: number;
   show?: boolean;
@@ -20,6 +23,7 @@ export interface Product {
   createdAt: string;
   bookmarks: number;
   views: number;
+  review_id?: number; // ← 이거 추가!
   extra: {
     pet: 'dog' | 'cat'; //동물선택
     mainCategory: string; // 메인  카테고리
@@ -52,7 +56,9 @@ export interface ProductSearchListRes {
 export type ProductList = Pick<
   Product,
   '_id' | 'price' | 'name' | 'mainImages' | 'bookmarks' | 'views'
->;
+> & {
+  extra?: Pick<Product['extra'], 'pet' | 'mainCategory' | 'subCategory'>;
+};
 
 // 상품 목록 페이지(embedding 제외한 타입)
 export type ProductWithoutEmbeddings = Omit<Product, 'extra'> & {
@@ -128,7 +134,15 @@ export interface OrderItem {
 // 판매자의 다른 상품 리스트, 판매 내역 페이지
 export type SellerProductList = Pick<
   Product,
-  '_id' | 'seller_id' | 'name' | 'mainImages' | 'price' | 'bookmarks' | 'views'
+  | '_id'
+  | 'seller_id'
+  | 'name'
+  | 'mainImages'
+  | 'price'
+  | 'bookmarks'
+  | 'views'
+  | 'quantity'
+  | 'buyQuantity'
 > & {
   quantity: number;
   buyQuantity: number;

@@ -1,20 +1,36 @@
 import ProductDetailCategory from '@/components/product/ProductDetailCategory';
 import { ProductDetail } from '@/types/product';
+import Image from 'next/image';
 
 // 상품 정보 탭
-export default function ProductInfoTab({ detail }: { detail: ProductDetail }) {
+export default function ProductInfoTab({
+  detail,
+  isSoldOut,
+}: {
+  detail: ProductDetail;
+  isSoldOut: boolean;
+}) {
   return (
     <>
       <div>
         {/* 카테고리 */}
         <ProductDetailCategory detail={detail} />
         {/* 판매 상태 */}
-        <span
-          className="mb-2 inline-block px-2 py-1 rounded-xl bg-br-primary-200 text-br-primary-500 border border-br-primary-500 text-xs"
-          aria-label="판매 상태"
-        >
-          판매 중
-        </span>
+        {!isSoldOut ? (
+          <span
+            className="mb-2 inline-block px-2 py-1 rounded-xl bg-br-primary-200 text-br-primary-500 border border-br-primary-500 text-xs"
+            aria-label="판매 상태"
+          >
+            판매중
+          </span>
+        ) : (
+          <span
+            className="mb-2 inline-block px-2 py-1 rounded-xl bg-br-input2-disabled-bg text-br-input2-disabled-text border border-br-input2-disabled-line text-xs"
+            aria-label="판매 상태"
+          >
+            판매 완료
+          </span>
+        )}
 
         {/* 본문 */}
         <h2 className="mb-2 text-lg font-semibold break-all">{detail.name}</h2>
@@ -28,7 +44,7 @@ export default function ProductInfoTab({ detail }: { detail: ProductDetail }) {
         {/* 조회수/찜 수*/}
         <div className="flex items-center gap-3 text-sm text-br-input-disabled-text mb-6 justify-end">
           <div className="flex items-center gap-1">
-            <img
+            <Image
               src="/icons/visile.svg"
               alt="조회수"
               width={16}
@@ -39,7 +55,7 @@ export default function ProductInfoTab({ detail }: { detail: ProductDetail }) {
           </div>
 
           <div className="flex items-center gap-1">
-            <img
+            <Image
               src="/icons/heart-line.svg"
               alt="찜"
               width={16}

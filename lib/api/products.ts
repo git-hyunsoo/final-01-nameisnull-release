@@ -12,7 +12,6 @@ export async function getProducts(): Promise<ApiListResponse<Product>> {
       headers: {
         'Client-Id': CLIENT_ID,
       },
-      cache: 'no-store',
     });
     return res.json();
   } catch (error) {
@@ -58,11 +57,14 @@ export async function getSellerProductList(
   sellerId: number
 ): Promise<ApiListResponse<SellerProductList>> {
   try {
-    const res = await fetch(`${API_URL}/products?seller_id=${sellerId}`, {
-      headers: {
-        'Client-Id': CLIENT_ID,
-      },
-    });
+    const res = await fetch(
+      `${API_URL}/products?seller_id=${sellerId}&showSoldOut=true`,
+      {
+        headers: {
+          'Client-Id': CLIENT_ID,
+        },
+      }
+    );
 
     return res.json();
   } catch (error) {
@@ -80,7 +82,7 @@ export async function mypageSellerProductList(): Promise<
   ApiListResponse<SellerProductList>
 > {
   try {
-    const { accessToken, user } = useUserStore.getState();
+    const { accessToken } = useUserStore.getState();
 
     const res = await fetch(`${API_URL}/seller/products`, {
       headers: {
@@ -92,6 +94,30 @@ export async function mypageSellerProductList(): Promise<
 
     return res.json();
   } catch (error) {
+    console.error(error);
+    return {
+      ok: 0,
+      message:
+        '요청하신 작업 처리에 실패했습니다. 잠시 후 다시 이용해 주시기 바랍니다.',
+    };
+  }
+}
+
+//상품 커스텀 검색
+export async function getCustomProducts(): Promise<ApiListResponse<Product>> {
+  try {
+    const res = await fetch(
+      `${API_URL}/products?excludeFields=extra.embeddings&custom={"buyQuantity":0}`,
+      {
+        headers: {
+          'Client-Id': CLIENT_ID,
+        },
+        cache: 'no-store',
+      }
+    );
+    return res.json();
+  } catch (error) {
+    // 네트워크 오류 처리
     console.error(error);
     return {
       ok: 0,

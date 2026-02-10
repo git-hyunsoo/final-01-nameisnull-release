@@ -11,12 +11,13 @@ export default function SearchForm() {
   const [searchValue, setSearchValue] = useState('');
   const router = useRouter();
 
-  // useSearchStore 훅에서 setQuery 함수만 꺼내서 setQuery 변수에 할당
-  // zustand에서 store 객체의 프로퍼티를 꺼낼 때 화살표 함수로 넘겨줌
   const setQuery = useSearchStore(s => s.setQuery);
+  const setRecommendationReason = useSearchStore(
+    s => s.setRecommendationReason
+  );
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault(); // 페이지 새로고침 방지
+    e.preventDefault();
 
     if (!searchValue.trim()) {
       alert('검색어를 입력해주세요');
@@ -27,15 +28,20 @@ export default function SearchForm() {
     const formData = new FormData();
     formData.append('query', searchValue);
 
-    // 서버 액션 호출(results는 유사도 높은 5개가 담긴 배열을 반환 받은 값)
-    const results = await SimilarityCompare(formData);
-    const idList = results.map(item => item._id).join(',');
+    // SimilarityCompare 서버 액션 함수 호출
+    const result = await SimilarityCompare(formData);
 
-    // setQuery에 검색창 입력 값 넘겨줌.
+    const productIds = result.products.map(item => item._id).join(',');
+    const recommendationReason = result.recommReason;
+
+    // 검색어, 상품 추천 이유 전역 상태에 저장
     setQuery(searchValue);
+    setRecommendationReason(recommendationReason ?? '');
 
-    // 페이지 이동
-    router.push(`/search/result?ids=${idList}`);
+    // url에 id들만 넘김
+    router.push(
+      productIds ? `/search/result?ids=${productIds}` : `/search/result`
+    );
   };
 
   return (

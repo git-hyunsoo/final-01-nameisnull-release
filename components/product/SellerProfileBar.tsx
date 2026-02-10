@@ -20,9 +20,11 @@ export default function SellerProfileBar({
   return (
     <>
       <section className="flex items-center gap-3">
-        <img
-          src={seller.image}
+        <Image
+          src={seller.image || '/icons/chat-profile.svg'}
           alt="판매자"
+          width={44}
+          height={44}
           className="w-11 h-11 rounded-full object-cover"
         />
 

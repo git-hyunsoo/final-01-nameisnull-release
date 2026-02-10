@@ -21,7 +21,6 @@ export async function addBookmark(
         message: '로그인이 필요합니다.',
       };
     }
-    const userId = user._id;
 
     const res = await fetch(`${API_URL}/bookmarks/product`, {
       method: 'POST',
@@ -81,7 +80,7 @@ export async function getBookmarks(): Promise<BookmarkListRes> {
       headers: {
         'Client-Id': CLIENT_ID,
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${accessToken}`,
+        ...(accessToken && { Authorization: `Bearer ${accessToken}` }),
       },
     });
     return res.json();

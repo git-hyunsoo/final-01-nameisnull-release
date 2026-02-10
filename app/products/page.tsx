@@ -3,14 +3,13 @@ import ProductHeader from '@/components/product/ProductHeader';
 import UnderBar from '@/components/common/Footer';
 import CategoryTab from '@/components/product/CategoryTab';
 import ProductPageList from '@/components/product/ProductPageList';
-import { getProducts } from '@/lib/api/products';
+import { getCustomProducts } from '@/lib/api/products';
 import ProductPageSearchBar from '@/components/product/ProductPageSearchBar';
 import ProductPageWriteButton from '@/components/product/ProductPageWriteButton';
 
 export default async function ProductPage() {
-  // 스플래시 화면이 나오도록 2.5초 지연 걸어둠
-  await new Promise(resolve => setTimeout(resolve, 1000 * 2.5));
-  const res = await getProducts();
+  await new Promise(resolve => setTimeout(resolve, 1000 * 0.5));
+  const res = await getCustomProducts();
 
   return (
     <div className="font-pretendard">
@@ -25,7 +24,7 @@ export default async function ProductPage() {
       {/* 상품 목록 */}
       {res.ok === 1 && <ProductPageList products={res.item} />}
 
-      {/* 글쓰기 버튼 (나중에 토큰 유무 조건 걸어둘 예정 ) */}
+      {/* 글쓰기 버튼 */}
       <ProductPageWriteButton />
       <UnderBar />
     </div>

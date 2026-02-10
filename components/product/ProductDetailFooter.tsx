@@ -1,4 +1,4 @@
-import { addBookmark, deleteBookmark } from '@/lib/api/bookmarks';
+import { addBookmark, deleteBookmark, getBookmarks } from '@/lib/api/bookmarks';
 import useUserStore from '@/store/authStore';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -9,33 +9,42 @@ import { useEffect, useState } from 'react';
 export default function ProductDetailFooter({
   productId,
   sellerId,
-  initialIsWished = false,
-  initialBookmarkId = null,
 }: {
   productId: number;
   sellerId: number;
-  initialIsWished?: boolean;
-  initialBookmarkId?: number | null;
 }) {
   const router = useRouter();
   const pathname = usePathname();
   const { user } = useUserStore();
 
-  const [isWished, setIsWished] = useState(initialIsWished);
-  const [bookmarkId, setBookmarkId] = useState<number | null>(
-    initialBookmarkId
-  );
+  const [isWished, setIsWished] = useState(false);
+  const [bookmarkId, setBookmarkId] = useState<number | null>(null);
 
   // 현재 사용자가 판매자인지 확인
   const isSeller = user?._id === sellerId;
 
+  // 클라이언트에서 찜 상태 확인
   useEffect(() => {
-    setIsWished(initialIsWished);
-    setBookmarkId(initialBookmarkId);
-  }, [initialIsWished, initialBookmarkId]);
+    const checkBookmark = async () => {
+      if (!user) return;
 
+      const bookmarkData = await getBookmarks();
+      if (bookmarkData.ok === 1) {
+        const myBookmark = bookmarkData.item.find(
+          b => b.product._id === productId
+        );
+        if (myBookmark) {
+          setIsWished(true);
+          setBookmarkId(myBookmark._id);
+        }
+      }
+    };
+
+    checkBookmark();
+  }, [productId, user]);
+
+  // 좋아요 클릭시 비로그인 상태면 로그인 페이지로
   const wishClick = async () => {
-    // 비로그인 상태면 로그인 페이지로
     if (!user) {
       router.push(`/auth/login?redirect=${pathname}`);
       return;
@@ -47,12 +56,14 @@ export default function ProductDetailFooter({
         if (result.ok === 1) {
           setIsWished(false);
           setBookmarkId(null);
+          console.log('💔 찜하기 취소');
         }
       } else {
         const result = await addBookmark(productId);
         if (result.ok === 1) {
           setIsWished(true);
           setBookmarkId(result.item._id);
+          console.log('♥️ 찜하기');
         }
       }
     } catch (error) {
@@ -60,6 +71,7 @@ export default function ProductDetailFooter({
     }
   };
 
+  // 채팅하기 클릭시 비로그인 상태면 로그인 페이지로
   const chatClick = (e: React.MouseEvent) => {
     if (!user) {
       e.preventDefault(); // Link 동작 막기
@@ -69,18 +81,12 @@ export default function ProductDetailFooter({
   };
 
   // 상태 변경 버튼
-  const statusClick = () => {
-    // 채팅 완료되면 ,,
-  };
 
   if (isSeller) {
     return (
       <div className="fixed bottom-0 left-0 right-0 flex gap-2 px-4 py-3 bg-white border-t border-br-input-disabled-line">
-        <button
-          onClick={statusClick}
-          className="flex-1 py-4 font-light bg-br-button-active-bg text-br-button-active-text rounded-xl text-center"
-        >
-          상태 변경
+        <button className="flex-1 py-4 font-light bg-br-button-active-bg text-br-button-active-text rounded-xl text-center">
+          상품 수정
         </button>
       </div>
     );

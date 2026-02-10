@@ -11,6 +11,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
+// 마이페이지
 export default function MyPage() {
   const router = useRouter();
   const [user, setUser] = useState<User | null>(null);
@@ -35,7 +36,6 @@ export default function MyPage() {
     fetchUser();
   }, [router]);
 
-  // 로딩 중
   if (isLoading) {
     return <Spinner />;
   }
@@ -56,7 +56,7 @@ export default function MyPage() {
                 alt="프로필"
                 width={64}
                 height={64}
-                className="rounded-full object-cover"
+                className="rounded-full object-cover w-16 h-16"
               />
             </div>
           </label>
@@ -310,7 +310,7 @@ export default function MyPage() {
                 className="w-full flex items-center justify-between py-2"
                 onClick={handleLogout}
               >
-                <span className="text-br-input-disabled-text">로그아웃</span>
+                <span className="text-br-error">로그아웃</span>
                 <Image
                   src="/icons/arrow-right.svg"
                   alt=""

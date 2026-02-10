@@ -41,7 +41,7 @@ export default function MessageBubble({
             alt="프로필"
             width={34}
             height={34}
-            className="w-[34px] h-[34px] self-start rounded-full object-cover"
+            className="w-8.5 h-8.5 self-start rounded-full object-cover"
           />
         )}
 
