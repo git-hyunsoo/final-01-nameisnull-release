@@ -9,15 +9,12 @@ const CLIENT_ID = process.env.NEXT_PUBLIC_CLIENT_ID || '';
 
 type LoginActionState = ApiResponse<LoginResponse> | null;
 
-// 실제 API 호출하는 원래 함수
-export async function login(
-  // state: LoginActionState,
-  formData: FormData
-): Promise<LoginActionState> {
+// 실제 API 호출하는 원래
+export async function login(formData: FormData): Promise<LoginActionState> {
   // FormData에서 값 추출
   const email = formData.get('email');
   const password = formData.get('password');
-  const autoLogin = formData.get('autoLogin') === 'on'; // 자동 로그인, 체크박스 값 처리
+  const autoLogin = formData.get('autoLogin') === 'on';
 
   // 타입가드, 값 검증(문자열 확인)
   if (typeof email !== 'string' || typeof password !== 'string') {
@@ -27,12 +24,10 @@ export async function login(
     };
   }
 
-  // LoginRequest 타입에 맞는 객체 생성
-  // const body: LoginRequest = { // 자동 로그인 하기 전 코드
   const body: LoginRequest & { autoLogin: boolean } = {
     email,
     password,
-    autoLogin, // 자동 로그인, 체크박스 값 추가
+    autoLogin,
   };
 
   try {

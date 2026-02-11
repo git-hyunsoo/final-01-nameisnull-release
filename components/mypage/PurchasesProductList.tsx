@@ -18,7 +18,7 @@ export default function PurchasesProductList({
     product.review_id !== undefined && product.review_id !== null;
 
   return (
-    <div className="relative mr-4">
+    <article className="relative mr-4">
       <Link
         href={`/products/${product._id}`}
         className="relative flex flex-row mt-4.25 gap-4 m-4 mr-4"
@@ -37,7 +37,7 @@ export default function PurchasesProductList({
         {/* 텍스트 영역 */}
         <div className="font-pretendard flex-1 min-w-0 flex flex-col justify-between">
           <div>
-            <p className="text-[14px] line-clamp-2">{product.name}</p>
+            <h3 className="text-[14px] line-clamp-2">{product.name}</h3>
             <p className="text-[16px] font-bold">
               {product.price.toLocaleString('ko-KR')}원
             </p>
@@ -48,12 +48,13 @@ export default function PurchasesProductList({
               <div className="flex flex-row items-center gap-0.5">
                 <Image
                   src="/icons/visile-gray.svg"
-                  alt="조회 수"
+                  alt=""
                   width={12}
                   height={12}
+                  aria-hidden="true"
                 />
                 <span className="text-[12px] text-br-button-disabled-text">
-                  {product.views}
+                  조회 {product.views}
                 </span>
               </div>
             )}
@@ -61,12 +62,13 @@ export default function PurchasesProductList({
               <div className="flex flex-row items-center gap-0.5">
                 <Image
                   src="/icons/heart-line-gray.svg"
-                  alt="찜 수"
+                  alt=""
                   width={12}
                   height={12}
+                  aria-hidden="true"
                 />
                 <span className="text-[12px] text-br-button-disabled-text">
-                  {product.bookmarks}
+                  찜 {product.bookmarks}
                 </span>
               </div>
             )}
@@ -83,6 +85,6 @@ export default function PurchasesProductList({
           발자국 등록
         </Link>
       )}
-    </div>
+    </article>
   );
 }

@@ -29,19 +29,21 @@ export default function SalesPage() {
 
     fetchSellerProducts();
   }, []);
+
   // 판매 중 / 판매 완료 필터링
   const sellingProducts = products.filter(p => p.buyQuantity === 0);
   const soldProducts = products.filter(p => p.buyQuantity === 1);
 
   return (
-    <>
+    <div className="font-pretendard">
       <Header title="판매 내역" />
 
       {/* 판매 중 탭 / 판매 완료 탭 */}
-      <div className="font-pretendard flex border-b border-[#F4F5FA]">
-        {/* 판매 중 */}
+      <nav className="flex border-b border-[#F4F5FA]" role="tablist">
         <button
           onClick={() => setActiveTab('selling')}
+          role="tab"
+          aria-selected={activeTab === 'selling'}
           className={`flex-1 py-3 text-center text-base ${
             activeTab === 'selling'
               ? 'border-b-2 border-br-primary-500 text-br-neutral-900'
@@ -51,9 +53,10 @@ export default function SalesPage() {
           판매 중
         </button>
 
-        {/* 판매 완료 */}
         <button
           onClick={() => setActiveTab('sold')}
+          role="tab"
+          aria-selected={activeTab === 'sold'}
           className={`flex-1 py-3 text-center text-base ${
             activeTab === 'sold'
               ? 'border-b-2 border-br-primary-500 text-br-neutral-900'
@@ -62,46 +65,54 @@ export default function SalesPage() {
         >
           판매 완료
         </button>
-      </div>
-      <div>
-        {/* 상품 목록 */}
-        <main className="font-pretendard flex-1 px-4 mb-20">
-          {/* 판매 중 탭 */}
-          {activeTab === 'selling' && (
-            <>
-              {isLoading ? (
-                <Spinner />
-              ) : sellingProducts.length > 0 ? (
-                sellingProducts.map(product => (
-                  <SearchResultProduct key={product._id} product={product} />
-                ))
-              ) : (
-                <div className="text-center mt-20 text-gray-500 font-light">
-                  판매 중인 상품이 없습니다
-                </div>
-              )}
-            </>
-          )}
+      </nav>
 
-          {/* 판매 완료 탭 */}
-          {activeTab === 'sold' && (
-            <div>
-              {isLoading ? (
-                <Spinner />
-              ) : soldProducts.length > 0 ? (
-                soldProducts.map(product => (
-                  <SearchResultProduct key={product._id} product={product} />
-                ))
-              ) : (
-                <div className="text-center mt-20 text-gray-500 font-light">
-                  판매 완료된 상품이 없습니다
-                </div>
-              )}
-            </div>
-          )}
-        </main>
-        <UnderBar />
-      </div>
-    </>
+      {/* 상품 목록 */}
+      <main className="flex-1 px-4 mb-20">
+        {/* 판매 중 탭 */}
+        {activeTab === 'selling' && (
+          <>
+            {isLoading ? (
+              <Spinner />
+            ) : sellingProducts.length > 0 ? (
+              <ul>
+                {sellingProducts.map(product => (
+                  <li key={product._id}>
+                    <SearchResultProduct product={product} />
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <div className="text-center mt-20 text-gray-500 font-light">
+                판매 중인 상품이 없습니다
+              </div>
+            )}
+          </>
+        )}
+
+        {/* 판매 완료 탭 */}
+        {activeTab === 'sold' && (
+          <>
+            {isLoading ? (
+              <Spinner />
+            ) : soldProducts.length > 0 ? (
+              <ul>
+                {soldProducts.map(product => (
+                  <li key={product._id}>
+                    <SearchResultProduct product={product} />
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <div className="text-center mt-20 text-gray-500 font-light">
+                판매 완료된 상품이 없습니다
+              </div>
+            )}
+          </>
+        )}
+      </main>
+
+      <UnderBar />
+    </div>
   );
 }

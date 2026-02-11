@@ -1,4 +1,4 @@
-// lib/api/edit.ts
+// 프로필 수정 API 함수
 
 import useUserStore from '@/store/authStore';
 import { ApiResponse } from '@/types/common';
@@ -12,13 +12,12 @@ export async function updateProfile(
   formData: UpdateUser
 ): Promise<ApiResponse<User>> {
   try {
-    // -1. 먼저 Zustand 스토어에서 데이터 시도
+    // 인증 정보 가져오기
     let { accessToken, user } = useUserStore.getState();
 
-    // -2. [안전장치] 만약 스토어가 비어있다면 세션 스토리지에서 직접 강제로 가져옴
-    // Zustand Persist의 기본 저장 키인 'auth-store' 또는 'userStore' 등을 확인해야 합니다.
+    // 스토어에 정보가 없으면 세션 스토리지에서 복원 시도
     if (!accessToken || !user) {
-      const sessionData = sessionStorage.getItem('auth-store'); // 본인의 스토어 name 확인
+      const sessionData = sessionStorage.getItem('auth-store');
       if (sessionData) {
         const parsed = JSON.parse(sessionData);
         accessToken = parsed.state.accessToken;
@@ -26,7 +25,7 @@ export async function updateProfile(
       }
     }
 
-    // -3. 최종 방어: 여전히 정보가 없다면 에러 리턴
+    // 인증 정보 유효성 검사
     if (!accessToken || !user?._id) {
       return {
         ok: 0,
@@ -34,7 +33,7 @@ export async function updateProfile(
       };
     }
 
-    // -4. API 호출
+    // 프로필 수정 API 호출
     const res = await fetch(`${API_URL}/users/${user._id}`, {
       method: 'PATCH',
       headers: {
@@ -45,6 +44,7 @@ export async function updateProfile(
       body: JSON.stringify(formData),
     });
 
+    // API 응답 처리
     const result = await res.json();
     return result;
   } catch (error) {

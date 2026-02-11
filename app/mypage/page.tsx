@@ -46,20 +46,18 @@ export default function MyPage() {
   return (
     <>
       <Header title="마이페이지" />
-      <div className="font-pretendard pb-20">
+      <main className="font-pretendard pb-20">
         {/* 프로필 */}
         <section className="px-4 py-4 flex items-center gap-4">
-          <label className="relative cursor-pointer">
-            <div className="relative w-16 h-16">
-              <Image
-                src={user?.image || '/icons/chat-profile.svg'}
-                alt="프로필"
-                width={64}
-                height={64}
-                className="rounded-full object-cover w-16 h-16"
-              />
-            </div>
-          </label>
+          <div className="relative w-16 h-16">
+            <Image
+              src={user?.image || '/icons/chat-profile.svg'}
+              alt="프로필"
+              width={64}
+              height={64}
+              className="rounded-full object-cover w-16 h-16"
+            />
+          </div>
 
           <div className="flex-1">
             <h2 className="text-lg text-br-text-body">{user.name}</h2>
@@ -148,7 +146,6 @@ export default function MyPage() {
               </p>
               <Link
                 href="/mypage/petedit"
-                type="submit"
                 className="flex items-center justify-center mt-4 w-full h-14 rounded-lg bg-br-primary-500 text-white text-lg"
               >
                 나의 포포 등록
@@ -156,11 +153,12 @@ export default function MyPage() {
             </div>
           )}
         </section>
+
         {/* 나의 관심 */}
         <section className="px-4 py-4">
           <h3 className="text-lg font-semibold mb-4">나의 관심</h3>
 
-          <div className="flex py-4">
+          <nav className="flex py-4">
             <Link
               href="/mypage/wishlist"
               className="flex-1 flex flex-col items-center gap-2"
@@ -195,134 +193,116 @@ export default function MyPage() {
                 최근 본 상품
               </span>
             </Link>
-          </div>
+          </nav>
         </section>
 
         {/* 나의 거래 */}
         <section className="px-4 py-4">
           <h3 className="text-lg font-semibold mb-4">나의 거래</h3>
 
-          <ul className="space-y-1 ml-7">
-            <li>
-              <Link
-                href="/mypage/sales"
-                className="w-full flex items-center justify-between py-2"
-              >
-                <span className="text-br-input-disabled-text">판매 내역</span>
-                <Image
-                  src="/icons/arrow-right.svg"
-                  alt=""
-                  width={16}
-                  height={16}
-                  className="w-4 h-4"
-                />
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/mypage/purchases"
-                className="w-full flex items-center justify-between py-2"
-              >
-                <span className="text-br-input-disabled-text">구매 내역</span>
-                <Image
-                  src="/icons/arrow-right.svg"
-                  alt=""
-                  width={16}
-                  height={16}
-                  className="w-4 h-4"
-                />
-              </Link>
-            </li>
-            <li>
-              <button className="w-full flex items-center justify-between py-2">
-                <span className="text-br-input-disabled-text">
-                  내 상품 관리하기
-                </span>
-                <Image
-                  src="/icons/arrow-right.svg"
-                  alt=""
-                  width={16}
-                  height={16}
-                  className="w-4 h-4"
-                />
-              </button>
-            </li>
-            <li>
-              <button className="w-full flex items-center justify-between py-2">
-                <span className="text-br-input-disabled-text">설정</span>
-                <Image
-                  src="/icons/arrow-right.svg"
-                  alt=""
-                  width={16}
-                  height={16}
-                  className="w-4 h-4"
-                />
-              </button>
-            </li>
-          </ul>
+          <nav className="space-y-1 ml-7">
+            <Link
+              href="/mypage/sales"
+              className="w-full flex items-center justify-between py-2"
+            >
+              <span className="text-br-input-disabled-text">판매 내역</span>
+              <Image
+                src="/icons/arrow-right.svg"
+                alt=""
+                width={16}
+                height={16}
+                className="w-4 h-4"
+              />
+            </Link>
+            <Link
+              href="/mypage/purchases"
+              className="w-full flex items-center justify-between py-2"
+            >
+              <span className="text-br-input-disabled-text">구매 내역</span>
+              <Image
+                src="/icons/arrow-right.svg"
+                alt=""
+                width={16}
+                height={16}
+                className="w-4 h-4"
+              />
+            </Link>
+            <button className="w-full flex items-center justify-between py-2">
+              <span className="text-br-input-disabled-text">
+                내 상품 관리하기
+              </span>
+              <Image
+                src="/icons/arrow-right.svg"
+                alt=""
+                width={16}
+                height={16}
+                className="w-4 h-4"
+              />
+            </button>
+            <button className="w-full flex items-center justify-between py-2">
+              <span className="text-br-input-disabled-text">설정</span>
+              <Image
+                src="/icons/arrow-right.svg"
+                alt=""
+                width={16}
+                height={16}
+                className="w-4 h-4"
+              />
+            </button>
+          </nav>
         </section>
 
         {/* 고객지원 */}
         <section className="px-4 py-4 mt-2">
           <h3 className="text-lg font-semibold mb-4">고객지원</h3>
 
-          <ul className="space-y-1 ml-7">
-            <li>
-              <button className="w-full flex items-center justify-between py-2">
-                <span className="text-br-input-disabled-text">공지사항</span>
-                <Image
-                  src="/icons/arrow-right.svg"
-                  alt=""
-                  width={16}
-                  height={16}
-                  className="w-4 h-4"
-                />
-              </button>
-            </li>
-            <li>
-              <button className="w-full flex items-center justify-between py-2">
-                <span className="text-br-input-disabled-text">고객센터</span>
-                <Image
-                  src="/icons/arrow-right.svg"
-                  alt=""
-                  width={16}
-                  height={16}
-                  className="w-4 h-4"
-                />
-              </button>
-            </li>
-            <li>
-              <button className="w-full flex items-center justify-between py-2">
-                <span className="text-br-input-disabled-text">
-                  약관 및 정책
-                </span>
-                <Image
-                  src="/icons/arrow-right.svg"
-                  alt=""
-                  width={16}
-                  height={16}
-                  className="w-4 h-4"
-                />
-              </button>
-            </li>
-            <li>
-              <button
-                className="w-full flex items-center justify-between py-2"
-                onClick={handleLogout}
-              >
-                <span className="text-br-error">로그아웃</span>
-                <Image
-                  src="/icons/arrow-right.svg"
-                  alt=""
-                  width={16}
-                  height={16}
-                  className="w-4 h-4"
-                />
-              </button>
-            </li>
-          </ul>
+          <nav className="space-y-1 ml-7">
+            <button className="w-full flex items-center justify-between py-2">
+              <span className="text-br-input-disabled-text">공지사항</span>
+              <Image
+                src="/icons/arrow-right.svg"
+                alt=""
+                width={16}
+                height={16}
+                className="w-4 h-4"
+              />
+            </button>
+            <button className="w-full flex items-center justify-between py-2">
+              <span className="text-br-input-disabled-text">고객센터</span>
+              <Image
+                src="/icons/arrow-right.svg"
+                alt=""
+                width={16}
+                height={16}
+                className="w-4 h-4"
+              />
+            </button>
+            <button className="w-full flex items-center justify-between py-2">
+              <span className="text-br-input-disabled-text">약관 및 정책</span>
+              <Image
+                src="/icons/arrow-right.svg"
+                alt=""
+                width={16}
+                height={16}
+                className="w-4 h-4"
+              />
+            </button>
+            <button
+              className="w-full flex items-center justify-between py-2"
+              onClick={handleLogout}
+            >
+              <span className="text-br-error">로그아웃</span>
+              <Image
+                src="/icons/arrow-right.svg"
+                alt=""
+                width={16}
+                height={16}
+                className="w-4 h-4"
+              />
+            </button>
+          </nav>
         </section>
-      </div>
+      </main>
       <UnderBar />
     </>
   );

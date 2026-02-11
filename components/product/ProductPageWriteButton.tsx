@@ -17,10 +17,15 @@ export default function ProductPageWriteButton() {
   };
 
   return (
-    <Link href="/products/new" onClick={handleClick}>
-      <button className="fixed bottom-20 right-4 bg-br-primary-500 z-10 text-[15px] text-white font-medium py-1.5 px-4.5 rounded-4xl shadow">
-        <span className="text-[18px] mr-1">+</span> 글쓰기
-      </button>
+    <Link
+      href="/products/new"
+      onClick={handleClick}
+      className="fixed bottom-20 right-4 bg-br-primary-500 z-10 text-[15px] text-white font-medium py-1.5 px-4.5 rounded-4xl shadow cursor-pointer"
+    >
+      <span className="text-[18px] mr-1" aria-hidden="true">
+        +
+      </span>
+      글쓰기
     </Link>
   );
 }

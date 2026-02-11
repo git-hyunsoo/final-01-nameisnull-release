@@ -1,4 +1,4 @@
-//로그인 정보
+// 사용자 인증 상태 관리를 위한 Zustand 스토어
 
 import { create, type StateCreator } from 'zustand';
 import { persist, type PersistStorage } from 'zustand/middleware';
@@ -8,7 +8,7 @@ import { type User } from '../types/user';
 interface UserStoreState {
   user: User | null;
   accessToken: string | null;
-  isAutoLogin: boolean; // 자동 로그인 여부
+  isAutoLogin: boolean;
   setUser: (user: User | null) => void;
   setToken: (token: string) => void;
   setAutoLogin: (isAuto: boolean) => void;

@@ -7,17 +7,18 @@ import SignupIcon from '@/public/icons/join.svg';
 
 export default function AuthPage() {
   return (
-    <div className="min-h-screen flex justify-center">
-      <div className="w-full px-11.5">
+    // 접근성: main 태그로 감싸 페이지의 주요 콘텐츠 영역임을 명시 (여백 영향 없음)
+    <main className="min-h-[calc(100svh-56px)] flex items-center justify-center px-11.5">
+      <div className="w-full max-w-sm -translate-y-6">
         {/* 로고 섹션 */}
-        {/* TODO: 로고 svg 추가 - icon폴더에 넣나? */}
-        <div className="mt-42.5">
+        <div>
           <h1>
             <Image
               src="/icons/logo-blue.svg"
               alt="FOFO 로고"
               width={94}
               height={24}
+              priority // 성능: 첫 화면의 핵심 로고이므로 우선순위 로딩 추가
             />
           </h1>
           <p className="mt-5 text-2xl leading-none font-medium">
@@ -29,9 +30,6 @@ export default function AuthPage() {
         </div>
 
         {/* 버튼 섹션 */}
-        {/* TODO: 아이콘 컬러 BK > WH, primary */}
-        {/* TODO: 아이콘 이름 join > signup */}
-        {/* TODO: 먼저 둘러보기 href 제대로 넘어가는지 확인 */}
         <div className="flex flex-col gap-2 mt-25">
           <Link
             href="/auth/login"
@@ -39,8 +37,9 @@ export default function AuthPage() {
           >
             <Image
               src={LoginIcon}
-              alt="로그인 아이콘"
+              alt="" // 접근성: 인접한 텍스트 "이메일로 로그인"과 중복되므로 비워둠 (스크린 리더 무시)
               className="absolute left-4"
+              aria-hidden="true" // 접근성: 명시적으로 장식 요소임을 선언
             />
             <span className="text-white">이메일로 로그인</span>
           </Link>
@@ -50,8 +49,9 @@ export default function AuthPage() {
           >
             <Image
               src={SignupIcon}
-              alt="회원가입 아이콘"
+              alt="" // 접근성: 인접한 텍스트 "회원가입"과 중복되므로 비워둠
               className="absolute left-4"
+              aria-hidden="true"
             />
             <span>회원가입</span>
           </Link>
@@ -63,6 +63,6 @@ export default function AuthPage() {
           </Link>
         </div>
       </div>
-    </div>
+    </main>
   );
 }

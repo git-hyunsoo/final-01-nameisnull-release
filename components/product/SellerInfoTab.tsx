@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { useState } from 'react';
 import { formatDistanceToNow } from 'date-fns';
 import { ko } from 'date-fns/locale';
+import { parseSafeDate } from '@/lib/utils/parseDate';
 
 // 판매자 정보 탭
 export default function SellerInfoTab({
@@ -91,52 +92,57 @@ export default function SellerInfoTab({
               <ul
                 className={`space-y-3 ${!showReviews && moreReviews ? 'max-h-90 overflow-hidden' : ''}`}
               >
-                {reviewList.map(reviewItem => (
-                  <li
-                    key={reviewItem._id}
-                    className="flex gap-3 pt-4 pb-4 border-b border-br-input-disabled-line"
-                  >
-                    {reviewItem.user?.image ? (
-                      <Image
-                        src={reviewItem.user.image}
-                        alt="사용자"
-                        className="w-10 h-10 rounded-full"
-                        width={10}
-                        height={10}
-                      />
-                    ) : (
-                      <div className="w-10 h-10 rounded-full bg-gray-300 flex items-center justify-center">
-                        <span className="text-xs">?</span>
+                {reviewList.map(reviewItem => {
+                  const createdAtDate = parseSafeDate(reviewItem.createdAt);
+                  return (
+                    <li
+                      key={reviewItem._id}
+                      className="flex gap-3 pt-4 pb-4 border-b border-br-input-disabled-line"
+                    >
+                      {reviewItem.user?.image ? (
+                        <Image
+                          src={reviewItem.user.image}
+                          alt="사용자"
+                          className="w-10 h-10 rounded-full"
+                          width={40}
+                          height={40}
+                        />
+                      ) : (
+                        <div className="w-10 h-10 rounded-full bg-gray-300 flex items-center justify-center">
+                          <span className="text-xs">?</span>
+                        </div>
+                      )}
+
+                      <div className="flex-1 min-w-0">
+                        <p className="text-sm text-br-text-body mb-1 wrap-break-words font-light">
+                          {reviewItem.content}
+                        </p>
+                        <span className="text-xs text-br-input-disabled-text">
+                          {reviewItem.user?.name || '익명'} ·{' '}
+                          {createdAtDate
+                            ? formatDistanceToNow(createdAtDate, {
+                                addSuffix: true,
+                                locale: ko,
+                              })
+                            : '방금 전'}
+                        </span>
                       </div>
-                    )}
 
-                    <div className="flex-1 min-w-0">
-                      <p className="text-sm text-br-text-body mb-1 wrap-break-words font-light">
-                        {reviewItem.content}
-                      </p>
-                      <span className="text-xs text-br-input-disabled-text">
-                        {reviewItem.user?.name || '익명'} ·{' '}
-                        {formatDistanceToNow(new Date(reviewItem.createdAt), {
-                          addSuffix: true,
-                          locale: ko,
-                        })}
-                      </span>
-                    </div>
-
-                    <div className="flex flex-col items-center gap-1">
-                      <Image
-                        src="/icons/footer-mypage-fill.svg"
-                        alt=""
-                        className="w-4 h-4"
-                        width={4}
-                        height={4}
-                      />
-                      <span className="text-xs font-light text-br-text-body">
-                        {reviewItem.rating}
-                      </span>
-                    </div>
-                  </li>
-                ))}
+                      <div className="flex flex-col items-center gap-1">
+                        <Image
+                          src="/icons/footer-mypage-fill.svg"
+                          alt=""
+                          className="w-4 h-4"
+                          width={16}
+                          height={16}
+                        />
+                        <span className="text-xs font-light text-br-text-body">
+                          {reviewItem.rating}
+                        </span>
+                      </div>
+                    </li>
+                  );
+                })}
               </ul>
               {/* 후기 더보기 그라디언트 */}
               {moreReviews && !showReviews && (

@@ -29,30 +29,30 @@ export default function PurchasesPage() {
   }, []);
 
   return (
-    <>
-      <div className="font-pretendard">
-        <Header title="구매 내역" />
+    <div className="font-pretendard">
+      <Header title="구매 내역" />
 
+      <main>
         {isLoading ? (
           <Spinner />
         ) : orders.length > 0 ? (
-          orders.map(order =>
-            order.products.map(product => (
-              <PurchasesProductList
-                key={`${order._id}-${product._id}`}
-                product={product}
-                orderId={order._id}
-              />
-            ))
-          )
+          <ul>
+            {orders.map(order =>
+              order.products.map(product => (
+                <li key={`${order._id}-${product._id}`}>
+                  <PurchasesProductList product={product} orderId={order._id} />
+                </li>
+              ))
+            )}
+          </ul>
         ) : (
           <div className="text-center mt-20 text-gray-500 font-light">
             구매 내역이 없습니다
           </div>
         )}
+      </main>
 
-        <UnderBar />
-      </div>
-    </>
+      <UnderBar />
+    </div>
   );
 }

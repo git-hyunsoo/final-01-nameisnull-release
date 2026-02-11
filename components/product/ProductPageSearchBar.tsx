@@ -17,9 +17,13 @@ export default function ProductPageSearch() {
 
   return (
     <div className="flex items-center bg-[#F4F5FA] rounded-full px-4 py-2.5">
+      <label htmlFor="product-search" className="sr-only">
+        상품 검색
+      </label>
       <Image src="/icons/generation-gray.svg" alt="" width={18} height={18} />
       <input
-        type="text"
+        type="search"
+        id="product-search"
         placeholder="검색어를 입력하세요"
         value={keyword}
         onChange={e => setKeyword(e.target.value)}

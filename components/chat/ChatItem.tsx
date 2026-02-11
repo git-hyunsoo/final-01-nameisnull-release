@@ -66,11 +66,13 @@ export default function ChatItem({ room }: ChatItemProps) {
     <Link
       href={`/chat/${room.resourceId}`}
       className="flex border-b border-[#F4F5FA] py-4.5"
+      aria-label={`${displayName}님과의 채팅, ${renderLastMessage()}${unreadCount > 0 ? `, 읽지 않은 메시지 ${unreadCount}개` : ''}`}
     >
       <div className="relative w-fit">
         <Image
           src={displayImage}
-          alt={displayName}
+          alt=""
+          aria-hidden="true"
           width={46}
           height={46}
           className="w-11.5 h-11.5 rounded-full object-cover"

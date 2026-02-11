@@ -9,32 +9,42 @@ export default function ProductHeader() {
   const { pet, setPet } = usePetStore();
   const user = useUserStore(state => state.user);
 
+  const petLabel = pet === 'dog' ? '강아지' : '고양이';
+  const oppositePetLabel = pet === 'dog' ? '고양이' : '강아지';
+
   return (
     <header className="flex items-center justify-center py-4 relative">
       <div className="flex items-center gap-2">
         <Image
           src={pet === 'dog' ? '/icons/dog.svg' : '/icons/cat.svg'}
-          alt={pet === 'dog' ? '강아지' : '고양이'}
+          alt=""
+          aria-hidden="true"
           width={24}
           height={24}
         />
-        <span className="text-lg font-medium">
-          {pet === 'dog' ? '강아지' : '고양이'}
-        </span>
+        <span className="text-lg font-medium">{petLabel}</span>
         <button
           type="button"
           onClick={() => setPet(pet === 'dog' ? 'cat' : 'dog')}
+          aria-label={`${oppositePetLabel}로 변경`}
         >
-          <Image src="/icons/change.svg" alt="변경" width={24} height={24} />
+          <Image
+            src="/icons/change.svg"
+            alt=""
+            aria-hidden="true"
+            width={24}
+            height={24}
+          />
         </button>
       </div>
 
-      <div className="absolute right-0">
+      <nav className="absolute right-0" aria-label="사용자 메뉴">
         {user ? (
-          <Link href="/mypage">
+          <Link href="/mypage" aria-label="마이페이지">
             <Image
               src={user.image || '/icons/chat-profile.svg'}
-              alt="프로필"
+              alt=""
+              aria-hidden="true"
               width={32}
               height={32}
               className="w-8 h-8 rounded-full object-cover border border-br-button-disabled-bg"
@@ -48,7 +58,7 @@ export default function ProductHeader() {
             로그인
           </Link>
         )}
-      </div>
+      </nav>
     </header>
   );
 }

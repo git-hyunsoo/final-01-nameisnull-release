@@ -29,14 +29,11 @@ export default function BaseSelect({
         {label}
         <span className="ml-0.5 text-[#60CFFF]">*</span>
       </p>
-
-      {/* 전체 컨테이너 - isOpen일 때 border 색상 변경 */}
       <div
         className={`mt-1.5 overflow-hidden border rounded-lg transition-all ${
           isOpen ? 'border-[#60cfff]' : 'border-[#e5e5ea]'
         } bg-white`}
       >
-        {/* 선택 영역 */}
         <div
           onClick={() => setIsOpen(!isOpen)}
           className="flex items-center justify-between h-12 px-4 cursor-pointer "
@@ -53,7 +50,6 @@ export default function BaseSelect({
           />
         </div>
 
-        {/* 옵션 리스트 - isOpen일 때만 라인과 함께 노출 */}
         {isOpen && (
           <div className="py-3.5 border-t border-[#e5e5ea]">
             {options.map(option => (
@@ -65,7 +61,6 @@ export default function BaseSelect({
                 }}
                 className="flex cursor-pointer items-center gap-2.5 px-4 py-2 hover:bg-[#f4f5fa]"
               >
-                {/* 라디오 버튼 */}
                 <div
                   className={`flex h-5.5 w-5.5 items-center justify-center rounded-full border transition-all ${
                     value === option

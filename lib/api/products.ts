@@ -1,3 +1,5 @@
+//상품 API 관련 함수들
+
 import useUserStore from '@/store/authStore';
 import { ApiListResponse, ApiResponse } from '@/types/common';
 import { Product, ProductDetail, SellerProductList } from '@/types/product';
@@ -33,7 +35,7 @@ export async function getProductDetail(
     const token =
       typeof window !== 'undefined'
         ? localStorage.getItem('accessToken')
-        : null; // ✅ 토큰 가져오기 (서버에서는 null)
+        : null;
 
     const res = await fetch(`${API_URL}/products/${id}`, {
       headers: {
@@ -107,7 +109,7 @@ export async function mypageSellerProductList(): Promise<
 export async function getCustomProducts(): Promise<ApiListResponse<Product>> {
   try {
     const res = await fetch(
-      `${API_URL}/products?excludeFields=extra.embeddings&custom={"buyQuantity":0}`,
+      `${API_URL}/products?excludeFields=extra.embeddings&limit=300`,
       {
         headers: {
           'Client-Id': CLIENT_ID,

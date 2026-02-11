@@ -1,33 +1,28 @@
-//로그인 페이지
+// 로그인 페이지
 
 'use client';
 
-/* 컴포넌트 및 훅 관리 */
 import Header from '@/components/common/Header';
 import Image from 'next/image';
 import useAuthStore from '@/store/authStore';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 import { useRouter } from 'next/navigation';
-
-/* 아이콘 */
 import DeleteIcon from '@/public/icons/delete-text.svg';
 import hiddenIcon from '@/public/icons/hidden.svg';
 import visibleIcon from '@/public/icons/visile.svg';
 import CheckIcon from '@/public/icons/Frame.svg';
 
 export default function LoginPage() {
-  /* ========== 상태 ========== */
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [isChecked, setIsChecked] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [checkingAuth, setCheckingAuth] = useState(false); //<----무한 루프 수정
+  const [checkingAuth, setCheckingAuth] = useState(true);
 
   const { setUser, setToken, setAutoLogin, user, accessToken } = useAuthStore();
   const router = useRouter();
 
-  // 자동 로그인 처리
   useEffect(() => {
     if (accessToken && user) {
       router.replace('/products');
@@ -36,11 +31,15 @@ export default function LoginPage() {
     }
   }, [accessToken, user, router]);
 
-  // 로그인 성공 시 처리
+  // 성능: 유효성 검사 로직 메모이제이션
+  const isValid = useMemo(
+    () => email.includes('@') && password.length >= 8,
+    [email, password]
+  );
+
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     if (isLoading) return;
-
     setIsLoading(true);
 
     try {
@@ -52,26 +51,15 @@ export default function LoginPage() {
             'Content-Type': 'application/json',
             'Client-Id': process.env.NEXT_PUBLIC_CLIENT_ID || '',
           },
-          body: JSON.stringify({
-            email,
-            password,
-          }),
+          body: JSON.stringify({ email, password }),
         }
       );
 
       const data = await res.json();
-
       if (data.ok === 1) {
-        const accessToken = data.item.token.accessToken;
-        const userData = data.item; // User 전체 객체
-
-        // 자동 로그인 설정을 먼저 적용
         setAutoLogin(isChecked);
-
-        // 그 다음 토큰과 사용자 정보 저장 (storage가 자동으로 결정됨)
-        setToken(accessToken);
-        setUser(userData);
-
+        setToken(data.item.token.accessToken);
+        setUser(data.item);
         router.push('/products');
       } else {
         alert(data.message);
@@ -83,29 +71,24 @@ export default function LoginPage() {
     }
   };
 
-  // 입력 유효성 검사
-  const isValid = email.includes('@') && password.length >= 8;
-
-  // 자동 로그인 확인 중일 때 로딩 처리
   if (checkingAuth) {
     return <div className="min-h-screen bg-white" />;
-    // return null; <----무한 루프 수정
   }
 
-  /* ========== 랜더 ========== */
   return (
     <>
       <Header title="로그인" />
-      <div className="min-h-screen flex justify-center ">
-        <div className="relative w-full px-11.5 bg-white">
+      <main className="min-h-[calc(100svh-56px)] flex items-center justify-center px-11.5">
+        <div className="w-full max-w-sm -translate-y-6">
           {/* 로고 섹션 */}
-          <div className="mt-42.5">
+          <div>
             <h1>
               <Image
                 src="/icons/logo-blue.svg"
-                alt="FOFO 로고"
+                alt="FOFO 로고" // 접근성: 의미 있는 대체 텍스트
                 width={94}
                 height={24}
+                priority // 성능: LCP 이미지 우선 로드
               />
             </h1>
             <p className="mt-5 text-2xl leading-none font-medium">
@@ -116,11 +99,14 @@ export default function LoginPage() {
             </p>
           </div>
 
-          {/* 로그인 폼 섹션 */}
           <form onSubmit={handleLogin} className="flex flex-col gap-2 mt-25">
-            {/* 로그인 - 이메일 입력(인풋) */}
+            {/* 이메일 입력 */}
             <div className="relative">
+              <label htmlFor="email" className="sr-only">
+                이메일 주소
+              </label>
               <input
+                id="email"
                 type="email"
                 name="email"
                 value={email}
@@ -129,44 +115,56 @@ export default function LoginPage() {
                 className="w-full h-12 px-4 border border-[#E5E5EA] rounded-lg text-[15px] text-[#0F1218] placeholder-[#8A8F99] focus:outline-none focus:border-[#60CFFF]"
               />
               {email.length > 0 && (
-                <div
+                <button
+                  type="button" // 접근성: 기본 submit 방지
                   onClick={() => setEmail('')}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 flex items-center justify-center cursor-pointer "
+                  className="absolute right-4 top-1/2 -translate-y-1/2 flex items-center justify-center cursor-pointer"
+                  aria-label="이메일 입력란 비우기"
                 >
-                  <Image src={DeleteIcon} alt="삭제 아이콘" />
-                </div>
+                  <Image src={DeleteIcon} alt="" />
+                </button>
               )}
             </div>
 
-            {/* 로그인 - 비밀번호 입력(인풋) */}
+            {/* 비밀번호 입력 */}
             <div className="relative">
+              <label htmlFor="password" className="sr-only">
+                비밀번호
+              </label>
               <input
+                id="password"
                 type={showPassword ? 'text' : 'password'}
                 value={password}
                 onChange={e => setPassword(e.target.value)}
                 placeholder="비밀번호를 입력하세요"
                 className="w-full h-12 px-4 border border-[#E5E5EA] rounded-lg text-[15px] text-[#0F1218] placeholder-[#8A8F99] focus:outline-none focus:border-[#60CFFF]"
               />
-              <div className="absolute right-4 top-1/2 -translate-y-1/2 flex items-center justify-center gap-2 cursor-pointer">
+              <div className="absolute right-4 top-1/2 -translate-y-1/2 flex items-center justify-center gap-2">
                 {password.length > 0 && (
-                  <div onClick={() => setPassword('')}>
-                    <Image src={DeleteIcon} alt="삭제 아이콘" />
-                  </div>
+                  <button
+                    type="button"
+                    onClick={() => setPassword('')}
+                    aria-label="비밀번호 입력란 비우기"
+                  >
+                    <Image src={DeleteIcon} alt="" />
+                  </button>
                 )}
-                <div onClick={() => setShowPassword(p => !p)}>
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(p => !p)}
+                  aria-label={
+                    showPassword ? '비밀번호 숨기기' : '비밀번호 보기'
+                  }
+                >
                   <Image
                     src={showPassword ? visibleIcon : hiddenIcon}
-                    alt={
-                      showPassword
-                        ? '비밀번호 보기 아이콘'
-                        : '비밀번호 숨기기 아이콘'
-                    }
+                    alt="" // 아이콘 자체보다 버튼의 aria-label이 중요
                   />
-                </div>
+                </button>
               </div>
             </div>
 
-            {/* 로그인 - 자동 로그인(체크박스) */}
+            {/* 자동 로그인 */}
             <div className="flex items-center justify-end gap-1 mt-3">
               <div className="relative w-4 h-4">
                 <input
@@ -178,8 +176,8 @@ export default function LoginPage() {
                   className="peer absolute w-full h-full opacity-0 z-10 cursor-pointer"
                 />
                 <div className="w-full h-full bg-[#E5E5EA]"></div>
-                <div className="absolute hidden peer-checked:flex items-center justify-center inset-0">
-                  <Image src={CheckIcon} alt="체크 아이콘" />
+                <div className="absolute hidden peer-checked:flex items-center justify-center inset-0 pointer-events-none">
+                  <Image src={CheckIcon} alt="" />
                 </div>
               </div>
               <label
@@ -190,7 +188,7 @@ export default function LoginPage() {
               </label>
             </div>
 
-            {/* 로그인 - 로그인(버튼) */}
+            {/* 로그인 버튼 */}
             <button
               type="submit"
               disabled={!isValid || isLoading}
@@ -202,11 +200,11 @@ export default function LoginPage() {
                   } 
                   ${isLoading ? 'opacity-70' : ''}`}
             >
-              로그인
+              {isLoading ? '로그인 중...' : '로그인'}
             </button>
           </form>
         </div>
-      </div>
+      </main>
     </>
   );
 }

@@ -57,22 +57,24 @@ export default function HistoryPage() {
       <Header title="최근 본 상품" />
 
       {/* 최근 본 상품 목록 */}
-      <div className="pb-20 font-pretendard">
+      <main className="pb-20 font-pretendard">
         {products.length === 0 ? (
           <div className="text-center mt-20 text-gray-500">
             최근 본 상품이 없습니다.
           </div>
         ) : (
-          // 최근 본 상품 목록 렌더링
-          products.map(product => (
-            <SavedProductCard
-              key={product._id}
-              product={product}
-              isWished={wishedProductIds.includes(product._id)}
-            />
-          ))
+          <ul>
+            {products.map(product => (
+              <li key={product._id}>
+                <SavedProductCard
+                  product={product}
+                  isWished={wishedProductIds.includes(product._id)}
+                />
+              </li>
+            ))}
+          </ul>
         )}
-      </div>
+      </main>
 
       <UnderBar />
     </>

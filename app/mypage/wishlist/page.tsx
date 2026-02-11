@@ -31,29 +31,28 @@ export default function WishlistPage() {
   }
 
   return (
-    <>
-      <div className="font-pretendard">
-        {/* 헤더 */}
-        <Header title="찜 목록" />
+    <div className="font-pretendard">
+      {/* 헤더 */}
+      <Header title="찜 목록" />
 
-        {/* 상품 목록 */}
-        <div className="mb-20">
-          {bookmarks.length > 0 ? (
-            bookmarks.map(bookmark => (
-              <SavedProductCard
-                key={bookmark.product._id}
-                product={bookmark.product}
-                isWished={true}
-              />
-            ))
-          ) : (
-            <p className="text-center mt-20 text-gray-500">
-              찜한 상품이 없습니다
-            </p>
-          )}
-        </div>
-        <UnderBar />
-      </div>
-    </>
+      {/* 상품 목록 */}
+      <main className="mb-20">
+        {bookmarks.length > 0 ? (
+          <ul>
+            {bookmarks.map(bookmark => (
+              <li key={bookmark.product._id}>
+                <SavedProductCard product={bookmark.product} isWished={true} />
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p className="text-center mt-20 text-gray-500">
+            찜한 상품이 없습니다
+          </p>
+        )}
+      </main>
+
+      <UnderBar />
+    </div>
   );
 }
