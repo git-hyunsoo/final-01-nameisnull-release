@@ -10,7 +10,7 @@ const CLIENT_ID = process.env.NEXT_PUBLIC_CLIENT_ID || '';
 //상품 목록
 export async function getProducts(): Promise<ApiListResponse<Product>> {
   try {
-    const res = await fetch(`${API_URL}/products`, {
+    const res = await fetch(`${API_URL}/products?limit=300`, {
       headers: {
         'Client-Id': CLIENT_ID,
       },
