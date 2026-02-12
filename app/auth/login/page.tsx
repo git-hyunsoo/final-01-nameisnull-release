@@ -13,8 +13,8 @@ import visibleIcon from '@/public/icons/visile.svg';
 import CheckIcon from '@/public/icons/Frame.svg';
 
 export default function LoginPage() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('cat2@market.com');
+  const [password, setPassword] = useState('11111111');
   const [showPassword, setShowPassword] = useState(false);
   const [isChecked, setIsChecked] = useState(false);
   const [isLoading, setIsLoading] = useState(false);

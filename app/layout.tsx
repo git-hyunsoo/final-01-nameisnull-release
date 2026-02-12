@@ -15,9 +15,9 @@ export const metadata: Metadata = {
     siteName: '포포(FoFo)',
     images: [
       {
-        url: '/assets/fofo-splash.png',
-        width: 800,
-        height: 600,
+        url: '/assets/fofo-image.png',
+        width: 1200,
+        height: 630,
       },
     ],
     locale: 'ko_KR',
